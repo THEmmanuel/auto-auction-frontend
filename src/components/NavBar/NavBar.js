@@ -19,13 +19,13 @@ const NavBar = () => {
 				<PrimaryButton
 					text='Sell a car'
 					click={() => null}
-					width={75}
+					width={100}
 				/>
 
 				<SecondaryButton
 					text='Connect Wallet'
 					click={() => null}
-					width={120}
+					width={150}
 				/>
 			</div>
 		</nav>
