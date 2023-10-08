@@ -7,10 +7,18 @@ const CategoryCard = (props) => {
 	};
 
 	return (
-		<div className={style.categoryCard} style={cardStyle}>
+		<div className={style.CategoryCard} style={cardStyle}>
 			<img src={props.image} alt="" />
-			<span>{props.name}</span>
-			<span>{props.description}</span>
+
+			<div className={style.CategoryContent}>
+				<span className={style.CategoryName}>
+					{props.name}
+				</span>
+
+				<span className={style.CategoryDescription}>
+					{props.description}
+				</span>
+			</div>
 		</div>
 	);
 };

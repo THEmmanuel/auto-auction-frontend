@@ -1,0 +1,21 @@
+.CategoryCard {
+	width: 300px;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.CategoryName {
+	color: #CCC;
+	font-size: 1em;
+}
+
+.CategoryDescription {
+	color: #C1C1C1;
+	font-size: 0.75em;
+}
+
+.CategoryContent {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
