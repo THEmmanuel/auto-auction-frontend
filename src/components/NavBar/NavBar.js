@@ -6,16 +6,22 @@ import SecondaryButton from "../SecondaryButton/SecondaryButton";
 
 const NavBar = () => {
 	return (
-		<nav>
-			<img src={logo} alt="" />
+		<nav className={style.NavBar}>
+			<img
+				src={logo}
+				alt=""
+				className={style.Logo}
+			/>
 
-			<div>
-				<span>home</span>
-				<span>listings</span>
-				<span>history</span>
+			<div className={style.LinksWrapper}>
+				<div className={style.LinksContainer}>
+					<span>home</span>
+					<span>listings</span>
+					<span>history</span>
+				</div>
 			</div>
 
-			<div>
+			<div className={style.ButtonsContainer}>
 				<PrimaryButton
 					text='Sell a car'
 					click={() => null}

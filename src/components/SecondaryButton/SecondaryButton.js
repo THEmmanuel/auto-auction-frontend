@@ -4,7 +4,7 @@ import style from './SecondaryButton.module.css';
 const SecondaryButton = ({ text, click, width }) => {
 	return (
 		<button
-			className={style.secondaryButton}
+			className={style.SecondaryButton}
 			style={{ width: `${width}px` }}    // Set the width based on the width prop
 			onClick={click}
 		>

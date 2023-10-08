@@ -1,0 +1,27 @@
+.ButtonsContainer {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}
+
+.Logo{
+	margin-right: 15%;
+}
+
+.LinksWrapper {
+	width: 25%;
+}
+
+.LinksContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	color: #FFF;
+}
+
+.NavBar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
