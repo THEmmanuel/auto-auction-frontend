@@ -11,6 +11,11 @@ const NavBar = () => {
 				<span>listings</span>
 				<span>history</span>
 			</div>
+
+			<div>
+				<button>sell a car</button>
+				<button>connect wallet</button>
+			</div>
 		</nav>
 	)
 }
