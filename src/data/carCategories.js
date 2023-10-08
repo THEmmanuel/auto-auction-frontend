@@ -10,12 +10,11 @@ import classic from '../assets/classic.svg';
 
 
 
-const carCategories = () => {
-	return [{
-			categoryImage: sedan,
-			categoryName: 'Sedan',
-			categoryDescription: 'Sleek and versatile, sedans offer a comfortable and efficient ride with spacious interiors, making them a popular choice for daily commuting.'
-		},
+const carCategories = [{
+	categoryImage: sedan,
+	categoryName: 'Sedan',
+	categoryDescription: 'Sleek and versatile, sedans offer a comfortable and efficient ride with spacious interiors, making them a popular choice for daily commuting.',
+	categoryColor: '#0C213A'
+}, ];
 
-	]
-}
+export default carCategories;

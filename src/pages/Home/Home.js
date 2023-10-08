@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Home.module.css';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
+import carCategories from '../../data/carCategories';
 
 const Home = () => {
 	return (
@@ -16,7 +17,15 @@ const Home = () => {
 			</div>
 
 			<section>
-				<CategoryCard />
+				{
+					carCategories.map(category =>
+						<CategoryCard
+							image={category.categoryImage}
+							name={category.categoryName}
+							description={category.categoryDescription}
+							color={category.categoryColor}
+						/>)
+				}
 			</section>
 		</section>
 	)

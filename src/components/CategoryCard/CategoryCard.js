@@ -1,14 +1,18 @@
 import React from 'react';
 import style from './CategoryCard.module.css';
 
-const CategoryCard = () => {
+const CategoryCard = (props) => {
+	const cardStyle = {
+		backgroundColor: props.color, // Set the background color based on the color prop
+	};
+
 	return (
-		<div>
-			<img src="" alt="" />
-			<span>Text</span>
-			<span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+		<div className={style.categoryCard} style={cardStyle}>
+			<img src={props.image} alt="" />
+			<span>{props.name}</span>
+			<span>{props.description}</span>
 		</div>
-	)
-}
+	);
+};
 
 export default CategoryCard;
