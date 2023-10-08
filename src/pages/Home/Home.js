@@ -3,21 +3,27 @@ import style from './Home.module.css';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import carCategories from '../../data/carCategories';
 import Input from '../../components/Input/Input';
+import searchIcon from '../../assets/searchIcon.svg'
+
 
 const Home = () => {
 	return (
 		<section>
-			<div>
+			<div >
 				<span>Auto Auction</span>
 				<span>List. Auction. Acquire</span>
 			</div>
 
-			<div>
-				<Input 
-					width = {460}
-					placeholder = 'What are you looking to buy. eg Porsche 911, Toyota Supra, Tesla etc'
+			<div className={style.SearchWrapper}>
+				<Input
+					width={460}
+					placeholder='What are you looking to buy. eg Porsche 911, Toyota Supra, Tesla etc'
 				/>
-				<button>search</button>
+
+				<button
+					className={style.SearchButton}>
+					<img src={searchIcon} alt="" />
+				</button>
 			</div>
 
 			<section className={style.CategoriesWrapper}>

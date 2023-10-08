@@ -5,3 +5,16 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.SearchButton{
+	width: fit-content;
+	padding: 5px 10px;
+}
+
+.SearchWrapper{
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: center;
+	margin-bottom: 80px;
+}
