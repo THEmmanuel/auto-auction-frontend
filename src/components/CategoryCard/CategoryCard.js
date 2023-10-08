@@ -3,7 +3,7 @@ import style from './CategoryCard.module.css';
 
 const CategoryCard = (props) => {
 	const cardStyle = {
-		backgroundColor: props.color, // Set the background color based on the color prop
+		backgroundColor: props.color
 	};
 
 	return (

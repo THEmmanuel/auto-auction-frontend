@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Home.module.css';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import carCategories from '../../data/carCategories';
+import Input from '../../components/Input/Input';
 
 const Home = () => {
 	return (
@@ -12,11 +13,14 @@ const Home = () => {
 			</div>
 
 			<div>
-				<input type="text" />
+				<Input 
+					width = {460}
+					placeholder = 'What are you looking to buy. eg Porsche 911, Toyota Supra, Tesla etc'
+				/>
 				<button>search</button>
 			</div>
 
-			<section>
+			<section className={style.CategoriesWrapper}>
 				{
 					carCategories.map(category =>
 						<CategoryCard
