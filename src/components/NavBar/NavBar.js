@@ -1,10 +1,11 @@
 import React from "react";
 import style from './NavBar.module.css';
+import logo from '../../assets/carIcon.svg';
 
 const NavBar = () => {
 	return (
 		<nav>
-			logo
+			<img src={logo} alt="" />
 
 			<div>
 				<span>home</span>
