@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
 import style from './Home.module.css';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import carCategories from '../../data/carCategories';
@@ -34,12 +36,15 @@ const Home = () => {
 			<section className={style.CategoriesWrapper}>
 				{
 					carCategories.map(category =>
-						<CategoryCard
-							image={category.categoryImage}
-							name={category.categoryName}
-							description={category.categoryDescription}
-							color={category.categoryColor}
-						/>)
+						<Link to='/listings'>
+							<CategoryCard
+								image={category.categoryImage}
+								name={category.categoryName}
+								description={category.categoryDescription}
+								color={category.categoryColor}
+							/>
+						</Link>
+					)
 				}
 			</section>
 		</section>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom'
+
 import style from './NavBar.module.css';
 import logo from '../../assets/carIcon.svg';
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
@@ -15,18 +17,28 @@ const NavBar = () => {
 
 			<div className={style.LinksWrapper}>
 				<div className={style.LinksContainer}>
-					<span>Home</span>
-					<span>Listings</span>
-					<span>History</span>
+					<Link to='/home'>
+						<span>Home</span>
+					</Link>
+
+					<Link to='/listings'>
+						<span>Listings</span>
+					</Link>
+
+					<Link to='/history'>
+						<span>History</span>
+					</Link>
 				</div>
 			</div>
 
 			<div className={style.ButtonsContainer}>
-				<PrimaryButton
-					text='Sell a car'
-					click={() => null}
-					width={100}
-				/>
+				<Link to='/post'>
+					<PrimaryButton
+						text='Sell a car'
+						click={() => null}
+						width={100}
+					/>
+				</Link>
 
 				<SecondaryButton
 					text='Connect Wallet'
