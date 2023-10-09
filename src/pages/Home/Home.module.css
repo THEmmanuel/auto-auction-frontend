@@ -4,17 +4,38 @@
 	gap: 40px;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 100px;
 }
 
-.SearchButton{
+.SearchButton {
 	width: fit-content;
 	padding: 5px 10px;
+	border-radius: 2px;
 }
 
-.SearchWrapper{
+.SearchWrapper {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
 	justify-content: center;
 	margin-bottom: 80px;
+}
+
+.HomeText {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 100px;
+	color: #FFF;
+	font-size: 1.2em;
+}
+
+.HomeIntroDescription {
+	font-size: 0.8em;
+}
+
+.Home {
+	display: flex;
+	flex-direction: column;
+	gap: 80px;
 }

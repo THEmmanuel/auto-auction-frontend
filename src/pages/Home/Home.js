@@ -8,10 +8,15 @@ import searchIcon from '../../assets/searchIcon.svg'
 
 const Home = () => {
 	return (
-		<section>
-			<div >
-				<span>Auto Auction</span>
-				<span>List. Auction. Acquire</span>
+		<section className={style.Home}>
+			<div className={style.HomeText}>
+				<span className={style.HomeIntroText}>
+					Auto Auction
+				</span>
+
+				<span className={style.HomeIntroDescription}>
+					List. Auction. Acquire
+				</span>
 			</div>
 
 			<div className={style.SearchWrapper}>

@@ -15,9 +15,9 @@ const NavBar = () => {
 
 			<div className={style.LinksWrapper}>
 				<div className={style.LinksContainer}>
-					<span>home</span>
-					<span>listings</span>
-					<span>history</span>
+					<span>Home</span>
+					<span>Listings</span>
+					<span>History</span>
 				</div>
 			</div>
 
