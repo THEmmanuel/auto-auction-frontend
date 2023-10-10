@@ -1,0 +1,8 @@
+.ListingsWrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 75px;
+	justify-content: center;
+	align-items: center;
+	margin: 150px 0;
+}

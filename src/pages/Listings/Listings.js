@@ -5,8 +5,7 @@ import ListCard from '../../components/ListCard/ListCard';
 const Listings = props => {
 	return (
 		<section>
-
-			<section>
+			<section className={style.ListingsWrapper}>
 				<ListCard />
 				<ListCard />
 				<ListCard />
