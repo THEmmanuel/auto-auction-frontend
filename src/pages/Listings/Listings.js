@@ -5,8 +5,16 @@ import ListCard from '../../components/ListCard/ListCard';
 const Listings = props => {
 	return (
 		<section>
-			Listings page here
-			<ListCard />
+
+			<section>
+				<ListCard />
+				<ListCard />
+				<ListCard />
+				<ListCard />
+				<ListCard />
+				<ListCard />
+				<ListCard />
+			</section>
 		</section>
 	)
 }

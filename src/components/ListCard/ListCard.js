@@ -3,6 +3,7 @@ import style from './ListCard.module.css';
 import engineIcon from '../../assets/engineIcon.svg';
 import gearIcon from '../../assets/gearIcon.svg';
 import timerIcon from '../../assets/timerIcon.svg';
+import mapIcon from '../../assets/mapIcon.svg'
 import testPorsche from '../../assets/testPorsche.svg';
 
 const ListCard = () => {
@@ -19,7 +20,7 @@ const ListCard = () => {
 						</span>
 
 						<div className={style.CarAttributes}>
-							<div>
+							<div className={style.AttributeContainer}>
 								<img
 									src={engineIcon}
 									alt=""
@@ -33,7 +34,7 @@ const ListCard = () => {
 								</span>
 							</div>
 
-							<div>
+							<div className={style.AttributeContainer}>
 								<img
 									src={gearIcon}
 									alt=""
@@ -47,7 +48,7 @@ const ListCard = () => {
 						</div>
 					</div>
 
-					<div>
+					<div className={style.CarCurrentBidWrapper}>
 						<span className={style.CarCurrentBidTitle}>
 							Current Bid:
 						</span>
@@ -59,21 +60,27 @@ const ListCard = () => {
 				</div>
 
 				<div className={style.ListCardAdditionalContent}>
-					<div>
+					<div className={style.CarDataWrapper}>
 						<img
 							src={timerIcon}
 							alt=""
-							className={style.timerIcon}
+							className={style.Icon}
 						/>
 
-						<span className={style.BidTime}>
+						<span className={style.CarData}>
 							time
 						</span>
 					</div>
 
-					<div>
-						<span>img</span>
-						<span>location</span>
+					<div className={style.CarDataWrapper}>
+						<img
+							src={mapIcon}
+							alt=""
+							className={style.Icon}
+						/>
+						<span className={style.CarData}>
+							location
+						</span>
 					</div>
 				</div>
 			</div>
