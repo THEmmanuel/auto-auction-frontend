@@ -1,4 +1,6 @@
 .CarStatsWrapper {
+	display: flex;
+	gap: 120px;
 	background-color: #00000012;
 	padding: 50px;
 }
