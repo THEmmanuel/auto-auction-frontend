@@ -7,13 +7,39 @@ const Listings = props => {
 	return (
 		<section>
 			<section className={style.ListingsWrapper}>
-				<ListCard />
-				<ListCard />
-				<ListCard />
-				<ListCard />
-				<ListCard />
-				<ListCard />
-				<ListCard />
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>
+
+				<Link to='/auction'>
+					<ListCard />
+				</Link>	
+
+
 			</section>
 		</section>
 	)
