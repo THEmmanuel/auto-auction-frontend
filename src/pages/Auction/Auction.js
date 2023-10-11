@@ -3,18 +3,21 @@ import style from './Auction.module.css';
 import BidCard from '../../components/BidCard/BidCard';
 import TimeIcon from '../../assets/timerIcon.svg';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import testPorsche from '../../assets/testPorsche.svg'
 
 
 const Auction = props => {
 	return (
 		<section className={style.AuctionWrapper}>
-			<div>
-				<div>
-					<span>Car name</span>
-					image component
+			<div className={style.Auction}>
+				<div className={style.CarInfo}>
+					<span className={style.CarName}>
+						Car name
+					</span>
+					<img src={testPorsche} alt="" />
 				</div>
 
-				<div>
+				<div className={style.CarPrice}>
 					<span>Highest bid</span>
 					<div>
 						<span>30.8ETH</span>
@@ -27,7 +30,7 @@ const Auction = props => {
 						<span>Time</span>
 					</div>
 
-					<div>
+					<div className={style.AuctionButtons}>
 						<PrimaryButton
 							text='Place Bid'
 							width={150}
@@ -54,7 +57,7 @@ const Auction = props => {
 				</div>
 			</div>
 
-			<div>
+			<div className={style.CarDetails}>
 				<div>
 					CarStats
 				</div>

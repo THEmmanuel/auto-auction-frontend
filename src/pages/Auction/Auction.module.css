@@ -3,3 +3,29 @@
 	flex-direction: row;
 	gap: 40px;
 }
+
+.Auction{
+	width: 50%;
+}
+
+.CarDetails{
+	width: 50%;
+}
+
+.CarInfo{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.AuctionButtons{
+	display: flex;
+	flex-direction: row;
+	gap: 40px;
+}
+
+.CarName{
+	color: #FFF;
+	display: block;
+	text-align: left;
+}
