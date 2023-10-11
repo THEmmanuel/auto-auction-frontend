@@ -18,16 +18,27 @@ const Auction = props => {
 				</div>
 
 				<div className={style.CarPrice}>
-					<span>Highest bid</span>
-					<div>
-						<span>30.8ETH</span>
-						<span>Price in $</span>
-					</div>
+					<div className={style.BidDetails}>
+						<span className={style.BidText}>
+							Highest bid
+						</span>
+						<div>
+							<span className={style.BidPriceETH}>
+								30.8ETH
+							</span>
 
-					<div>
-						<img src={TimeIcon} alt="" />
-						<span>Bid Time Left</span>
-						<span>Time</span>
+							<span className={style.BidPriceDollars}>
+								$427000
+							</span>
+						</div>
+
+						<div>
+							<img src={TimeIcon} alt="" />
+							<span >
+								Bid Time Left:
+							</span>
+							<span>21:01:44</span>
+						</div>
 					</div>
 
 					<div className={style.AuctionButtons}>
@@ -43,7 +54,7 @@ const Auction = props => {
 					</div>
 				</div>
 
-				<div>
+				<div className={style.BidPriceWrapper}>
 					<span>10 bids</span>
 					<BidCard />
 					<BidCard />

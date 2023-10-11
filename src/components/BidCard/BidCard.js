@@ -3,27 +3,34 @@ import style from './BidCard.module.css';
 
 const BidCard = () => {
 	return (
-		<div>
-			<div>
-				<div>
-					color
-				</div>
+		<div className={style.BidCardWrapper}>
+			<div className={style.BidCardContent}>
+				<div className={style.BidCardIcon} />
 
-				<span>
+				<span className={style.BidderWalletAddress}>
 					wallet address
 				</span>
 
-				Bid
-				<span>
-					30.8ETH
-				</span>
+				<div className={style.BidAmountDetails}>
+					<div className={style.BidAmountWrapper}>
+						<span>
+							Bid:
+						</span>
 
-				<span>
-					$35000
-				</span>
+						<span className={style.BidAmount}>
+							30.8ETH
+						</span>
 
+						<span className={style.BidAmount}>
+							$35000
+						</span>
+					</div>
+				</div>
 			</div>
 
+			<span className={style.BidTime}>
+				Oct, 1. 2022. 5:12PM
+			</span>
 		</div>
 	)
 }

@@ -1,31 +1,55 @@
-.AuctionWrapper{
+.AuctionWrapper {
 	display: flex;
 	flex-direction: row;
 	gap: 40px;
 }
 
-.Auction{
+.Auction {
 	width: 50%;
 }
 
-.CarDetails{
+.CarDetails {
 	width: 50%;
 }
 
-.CarInfo{
+.CarInfo {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 }
 
-.AuctionButtons{
+.AuctionButtons {
 	display: flex;
 	flex-direction: row;
 	gap: 40px;
 }
 
-.CarName{
+.CarName {
 	color: #FFF;
 	display: block;
 	text-align: left;
+}
+
+.CarPrice {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.BidText {
+	color: #545454;
+}
+
+.BidPriceETH {
+	color: #646464;
+}
+
+.BidPriceDollars {
+	color: #FFF;
+}
+
+.BidPriceWrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
 }

@@ -1,0 +1,45 @@
+.BidCardWrapper {
+	display: flex;
+	flex-direction: row;
+	background: #2A2A2A;
+	border-radius: 5px;
+	padding: 10px;
+	padding-right: 20px;
+	justify-content: space-between;
+}
+
+.BidCardContent {
+	display: flex;
+	flex-direction: row;
+}
+
+.BidCardIcon {
+	width: 30px;
+	height: 30px;
+	background-color: #337843;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.BidderWalletAddress {
+	color: #656565;
+	margin-right: 20px;
+}
+
+.BidAmountDetails {
+	color: #898989;
+}
+
+.BidTime {
+	color: #656565;
+}
+
+.BidAmount{
+	margin-right: 10px;
+}
+
+.BidAmountWrapper{
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
