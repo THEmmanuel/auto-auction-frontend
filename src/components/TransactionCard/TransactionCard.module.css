@@ -1,0 +1,23 @@
+.TransactionCard{
+	background: #2A2A2A;
+	display: flex;
+	padding: 10px;
+	justify-content: space-between;
+	padding-right: 100px;
+}
+
+.TransactionDetails{
+	color: #7D7D7D;
+	width: 60%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.TransactionStatus{
+	background-color: #68b486;
+	color: #FFF;
+	padding: 2px 20px;
+	border-radius: 10px;
+	font-size: 0.9em;
+}

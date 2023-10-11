@@ -1,0 +1,19 @@
+.HistoryHeading{
+	color: #FFF;
+	width: 55%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: left;
+}
+
+.HistoryTable{
+	width: 100%;
+}
+
+.TransactionCardWrapper{
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
