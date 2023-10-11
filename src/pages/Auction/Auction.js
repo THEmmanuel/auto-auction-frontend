@@ -4,6 +4,7 @@ import BidCard from '../../components/BidCard/BidCard';
 import TimeIcon from '../../assets/timerIcon.svg';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import testPorsche from '../../assets/testPorsche.svg'
+import CarStats from '../../components/CarStats/CarStats';
 
 
 const Auction = props => {
@@ -84,7 +85,7 @@ const Auction = props => {
 
 			<div className={style.CarDetails}>
 				<div>
-					CarStats
+					<CarStats />
 				</div>
 
 				<div>
