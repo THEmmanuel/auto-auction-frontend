@@ -1,3 +1,26 @@
-.CarStatsWrapper{
+.CarStatsWrapper {
 	background-color: #00000012;
+	padding: 50px;
+}
+
+.CarStatInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	text-align: left;
+}
+
+.CarStatText {
+	color: #595959;
+	font-size: 0.75em;
+}
+
+.CarStat {
+	color: #FFF;
+}
+
+.CarStatInfoWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
