@@ -103,5 +103,21 @@
 
 .BidTimeText{
 	color: #595959;
-	
+}
+
+.CarDetailsTextWrapper{
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.CarDetailsTextTitle{
+	font-size: 1.1em;
+	color: #FFF;
+	margin-top: 70px;
+	margin-bottom: 30px;
+}
+
+.CarDetailsText{
+	color: #C1C1C1;
 }

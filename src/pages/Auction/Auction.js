@@ -13,7 +13,7 @@ const Auction = props => {
 			<div className={style.Auction}>
 				<div className={style.CarInfo}>
 					<span className={style.CarName}>
-						Car name
+						Porsche 911
 					</span>
 					<img src={testPorsche} alt="" />
 				</div>
@@ -88,13 +88,14 @@ const Auction = props => {
 					<CarStats />
 				</div>
 
-				<div>
-					<span>
+				<div className={style.CarDetailsTextWrapper}>
+					<span className={style.CarDetailsTextTitle}>
 						About this car
 					</span>
 
-					<span>
+					<span className={style.CarDetailsText}>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea natus recusandae ipsum ut necessitatibus eum repellat dolor minima, nulla dolorum corrupti voluptatem. Accusamus commodi, placeat ea autem voluptatem ratione maiores!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea natus recusandae ipsum ut necessitatibus eum repellat dolor minima, nulla dolorum corrupti voluptatem. Accusamus commodi, placeat ea autem voluptatem ratione maiores nulla dolorum corrupti voluptatem. Accusamus commodi, placeat ea autem voluptatem ratione maiores! placeat ea autem voluptatem ratione maiores!
 					</span>
 				</div>
 			</div>
