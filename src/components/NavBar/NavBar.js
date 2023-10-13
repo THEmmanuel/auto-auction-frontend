@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import style from './NavBar.module.css';
 import logo from '../../assets/carIcon.svg';
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import SecondaryButton from "../SecondaryButton/SecondaryButton";
+// import SecondaryButton from "../SecondaryButton/SecondaryButton";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const NavBar = () => {
 	return (
@@ -40,11 +41,12 @@ const NavBar = () => {
 					/>
 				</Link>
 
-				<SecondaryButton
+				{/* <SecondaryButton
 					text='Connect Wallet'
 					click={() => null}
 					width={150}
-				/>
+				/> */}
+				<ConnectButton />
 			</div>
 		</nav>
 	)
