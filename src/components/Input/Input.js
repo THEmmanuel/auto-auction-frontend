@@ -3,12 +3,20 @@ import style from './Input.module.css';
 
 const Input = props => {
 	return (
-		<input
-			type="text"
-			placeholder={props.placeholder}
-			className={style.Input}
+		<div
+			className={style.InputWrapper}
 			style={{ width: `${props.width}px` }}
-		/>
+		>
+			<span className={style.InputLabel}>
+				Label
+			</span>
+
+			<input
+				type="text"
+				placeholder={props.placeholder}
+				className={style.Input}
+			/>
+		</div>
 	)
 }
 

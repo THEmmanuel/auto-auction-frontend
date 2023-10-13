@@ -6,3 +6,14 @@
 	padding: 5px;
 	color: #6D6969;
 }
+
+.InputWrapper{
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	gap: 10px;
+}
+
+.InputLabel{
+	color: #FFF;
+}
