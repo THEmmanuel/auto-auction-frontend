@@ -1,0 +1,11 @@
+.InputFields{
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.AttributesWrapper{
+	display: flex;
+	flex-direction: row;
+	gap: 100px;
+}

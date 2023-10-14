@@ -8,7 +8,7 @@ const Input = props => {
 			style={{ width: `${props.width}px` }}
 		>
 			<span className={style.InputLabel}>
-				Label
+				{props.label}
 			</span>
 
 			<input
