@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Post.module.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/MainDropdown/Dropdown';
 import SecondaryButton from '../../components/SecondaryButton/SecondaryButton';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
-import porsche from '../../assets/testPorsche.svg'
+import porsche from '../../assets/testPorsche.svg';
+
 
 const Post = props => {
+	const [AuctionData, setAuctionData] = useState({
+
+	})
+
 	return (
 		<section className={style.PostPageWrapper}>
 			<span className={style.SectionTitle}>

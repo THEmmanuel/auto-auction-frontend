@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,6 +10,7 @@ import Post from './pages/Post/Post';
 import History from './pages/History/History';
 
 import NavBar from './components/NavBar/NavBar';
+import { useAccount } from 'wagmi';
 
 import {
 	BrowserRouter as Router,
@@ -15,105 +18,85 @@ import {
 	Route
 } from 'react-router-dom';
 
-import '@rainbow-me/rainbowkit/styles.css';
-import {
-	getDefaultWallets,
-	RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import {
-	goerli,
-	mantleTestnet,
-	polygonMumbai,
-	polygonZkEvmTestnet,
-	scrollTestnet
-} from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
 
-const { chains, publicClient } = configureChains(
-	[
-		goerli,
-		mantleTestnet,
-		polygonMumbai,
-		polygonZkEvmTestnet,
-		scrollTestnet],
-	[
-		alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-		publicProvider()
-	]
-);
+// const addUserToDatabase = useCallback(() => {
+// 	axios.post(`${API_URL}/users`, {
+// 		email: user.primaryEmailAddress.emailAddress,
+// 		username: user.username,
+// 		userID: user.id,
+// 		userProfileURL: user.profileImpageUrl,
+// 	}).then(
+// 		res => console.log(res)
+// 	).catch(err => err)
+// }, [user])
 
-const { connectors } = getDefaultWallets({
-	appName: 'My RainbowKit App',
-	projectId: 'YOUR_PROJECT_ID',
-	chains
-});
 
-const wagmiConfig = createConfig({
-	autoConnect: true,
-	connectors,
-	publicClient
-})
-
+// function CreateUser() {
+// 	const { address } = useAccount();
+// 	console.log(address);
+// }
 
 
 
 function App() {
+	const { address } = useAccount()
+	// const addUserToDatabase = () => {
+	// 	axios.post(`${API_URL}/users`, {
+	// 		walletAddress: 'test'
+	// 	})
+	// }
+	console.log(address)
+
 	return (
-		<WagmiConfig config={wagmiConfig}>
-			<RainbowKitProvider chains={chains}>
-				<Router>
-					<div className="App">
-						<NavBar />
-						<Routes>
-							<Route
-								exact
-								path='/'
-								element=<Home />
-							>
-							</Route>
+		<Router>
+			<div className="App">
+				<NavBar />
+				<Routes>
+					<Route
+						exact
+						path='/'
+						element=<Home />
+					>
+					</Route>
 
-							<Route
-								exact
-								path='/home'
-								element=<Home />
-							>
-							</Route>
+					<Route
+						exact
+						path='/home'
+						element=<Home />
+					>
+					</Route>
 
-							<Route
-								exact
-								path='/auction'
-								element=<Auction />
-							>
-							</Route>
+					<Route
+						exact
+						path='/auction'
+						element=<Auction />
+					>
+					</Route>
 
-							<Route
-								exact
-								path='/listings'
-								element=<Listings />
-							>
-							</Route>
+					<Route
+						exact
+						path='/listings'
+						element=<Listings />
+					>
+					</Route>
 
-							<Route
-								exact
-								path='/post'
-								element=<Post />
-							>
-							</Route>
+					<Route
+						exact
+						path='/post'
+						element=<Post />
+					>
+					</Route>
 
-							<Route
-								exact
-								path='/history'
-								element=<History />
-							>
-							</Route>
+					<Route
+						exact
+						path='/history'
+						element=<History />
+					>
+					</Route>
 
-						</Routes>
-					</div>
-				</Router>
-			</RainbowKitProvider>
-		</WagmiConfig>
+				</Routes>
+			</div>
+		</Router>
 	);
 }
 
