@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Post.module.css';
 import Input from '../../components/Input/Input';
+import Dropdown from '../../components/MainDropdown/Dropdown';
 
 const Post = props => {
 	return (
@@ -38,6 +39,20 @@ const Post = props => {
 						label='Car mileage in kilometers'
 						placeholder='ex: 12000, 35000'
 					/>
+
+					<Dropdown
+						DropdownTitle='Car Category'
+						dataArray={['Sedans', 'SUVs', 'Coupes', 'Hatchbacks', 'Convertibles', 'Wagons', 'Trucks', 'Vans/Minivans', 'Classics']}
+						// change={handleRoleChange}
+						defaultValue={'test'}
+					/>
+
+					<Dropdown
+						DropdownTitle='Bid time in hrs. The bid closes and highest bidder gets the auction in:'
+						dataArray={[24, 48, 72, 96]}
+						// change={handleRoleChange}
+						defaultValue={'test'}
+					/>
 				</div>
 
 
@@ -48,35 +63,49 @@ const Post = props => {
 						placeholder='ex: Twin Turbo V6, Bi-Turbo V8, Supercharged V12'
 					/>
 
-					<Input
-						width={360}
-						label='ex: Toyota, BMW, Porsche, Tesla etc'
-						placeholder='Car make/manufacturer'
+					<Dropdown
+						DropdownTitle='Drivetrain'
+						dataArray={["AWD", "RWD", "FWD", "4x4", "4WD"]}
+						// change={handleRoleChange}
+						defaultValue={'test'}
 					/>
 
 					<Input
 						width={360}
 						label='Transmission'
-						placeholder='ex: Supra, M3, 911, Model 3 etc'
+						placeholder='ex: 5-Speed Manual'
 					/>
 
 					<Input
 						width={360}
-						label='Car model year'
-						placeholder='ex: 2012'
+						label='Exterior colour'
+						placeholder='ex: Blue'
 					/>
 
 					<Input
 						width={360}
-						label='Car mileage in kilometers'
-						placeholder='ex: 12000, 35000'
+						label='Interior Colour'
+						placeholder='ex: White on Black'
+					/>
+
+					<Input
+						width={360}
+						label='Horsepower'
+						placeholder='ex: 750hp'
+					/>
+
+					<Dropdown
+						DropdownTitle='Are you the owner or a dealer for this car?'
+						dataArray={["Owner", "Buyer"]}
+						// change={handleRoleChange}
+						defaultValue={'test'}
 					/>
 				</div>
 			</div>
 
 
 			<div>
-				<Input/>
+
 			</div>
 		</section>
 	)
