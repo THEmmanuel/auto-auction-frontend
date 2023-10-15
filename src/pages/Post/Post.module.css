@@ -1,16 +1,16 @@
-.InputFields{
+.InputFields {
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
 }
 
-.AttributesWrapper{
+.AttributesWrapper {
 	display: flex;
 	flex-direction: row;
 	gap: 100px;
 }
 
-.CarDescriptionContainer{
+.CarDescriptionContainer {
 	width: 600px;
 	height: 300px;
 	border: 0.5px solid #878787;
@@ -19,7 +19,23 @@
 	padding: 10px;
 }
 
-.CarDetailFields{
+.CarDetailFields {
 	display: flex;
-	flex-direction: row ;
+	flex-direction: row;
+	gap: 50px;
+}
+
+.CarTextField {
+	color: #FFF;
+	font-size: 0.8em;
+	text-align: left;
+	display: block;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.CarDetailInputsWrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
 }

@@ -105,7 +105,11 @@ const Post = props => {
 
 				<div className={style.CarDetailFields}>
 					<div>
-						<span>Car Description</span>
+						<span
+							className={style.CarTextField}
+						>
+							Car Description
+						</span>
 						<textarea
 							name=""
 							className={style.CarDescriptionContainer}
@@ -113,14 +117,16 @@ const Post = props => {
 						>
 						</textarea>
 
-						<div>
+						<div className={style.CarDetailInputsWrapper}>
 							<div>
 								<Input
 									width={620}
 									label='Reserve price in $ (auction is cancelled if this price is not met)'
 									placeholder='ex: 35000'
 								/>
-								<span>
+								<span
+									className={style.CarTextField}
+								>
 									Price in ETH: 10.7 ETH
 								</span>
 							</div>
@@ -131,7 +137,9 @@ const Post = props => {
 									label='Reserve price in $ (auction is cancelled if this price is not met)'
 									placeholder='ex: 35000'
 								/>
-								<span>
+								<span
+									className={style.CarTextField}
+								>
 									Price in ETH: 10.7 ETH
 								</span>
 							</div>
