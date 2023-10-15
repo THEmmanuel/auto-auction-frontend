@@ -134,10 +134,22 @@ const Post = props => {
 							<span
 								className={style.CarTextField}>
 								Add Image
-
 							</span>
-								<img src={porsche} alt="" />
 
+							<div
+								className={style.CarImageWrapper}
+							>
+								<img
+									src={porsche}
+									alt=""
+									className={style.CarImage}
+								/>
+
+								<PrimaryButton
+									text='choose image'
+									width={120}
+								/>
+							</div>
 						</div>
 
 						<div>
