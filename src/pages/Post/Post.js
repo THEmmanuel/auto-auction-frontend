@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Post.module.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/MainDropdown/Dropdown';
+import SecondaryButton from '../../components/PrimaryButton/PrimaryButton';
 
 const Post = props => {
 	return (
@@ -101,12 +102,48 @@ const Post = props => {
 						defaultValue={'test'}
 					/>
 				</div>
+
+				<div className={style.CarDetailFields}>
+					<div>
+						<span>Car Description</span>
+						<textarea
+							name=""
+							className={style.CarDescriptionContainer}
+							placeholder="Brief overview of the car's condition and features) include  additional features or options (e.g., sunroof, leather seats, navigation system)"
+						>
+						</textarea>
+
+						<div>
+							<div>
+								<Input
+									width={620}
+									label='Reserve price in $ (auction is cancelled if this price is not met)'
+									placeholder='ex: 35000'
+								/>
+								<span>
+									Price in ETH: 10.7 ETH
+								</span>
+							</div>
+
+							<div>
+								<Input
+									width={620}
+									label='Reserve price in $ (auction is cancelled if this price is not met)'
+									placeholder='ex: 35000'
+								/>
+								<span>
+									Price in ETH: 10.7 ETH
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-
-			<div>
-
-			</div>
+			<SecondaryButton
+				text='Submit'
+				width={150}
+			/>
 		</section>
 	)
 }
