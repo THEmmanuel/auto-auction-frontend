@@ -7,7 +7,21 @@
 .AttributesWrapper {
 	display: flex;
 	flex-direction: row;
-	gap: 100px;
+	justify-content: space-between;
+}
+
+.CarAttributesWrapper{
+	display: flex;
+	flex-direction: row;
+	gap: 60px;
+}
+
+.SectionTitle{
+	display: block;
+	font-size: 1.1em;
+	color: #FFF;
+	text-align: left;
+	margin: 50px 0;
 }
 
 .CarDescriptionContainer {
@@ -38,4 +52,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
+}
+
+.PostPageWrapper{
+	display: flex;
+	flex-direction: column;
+}
+
+.ButtonWrapper{
+	margin: 200px 0;
 }
