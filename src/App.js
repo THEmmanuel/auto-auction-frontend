@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -36,16 +36,28 @@ import {
 // 	console.log(address);
 // }
 
+const API_URL = 'http://localhost:8080'
 
 
 function App() {
 	const { address } = useAccount()
-	// const addUserToDatabase = () => {
-	// 	axios.post(`${API_URL}/users`, {
-	// 		walletAddress: 'test'
-	// 	})
-	// }
-	console.log(address)
+	const currentDate = new Date();
+	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
+	const formattedDate = currentDate.toISOString();
+
+	const addUserToDatabase = () => {
+		axios.post(`${API_URL}/users`, {
+			walletAddress: address,
+			createdAt: formattedDate,
+			role: 'member'
+		}).then(
+			// 		res => console.log(res)
+		).catch(err => err)
+	}
+
+	useEffect(() => {
+		addUserToDatabase()
+	}, [address])
 
 	return (
 		<Router>
