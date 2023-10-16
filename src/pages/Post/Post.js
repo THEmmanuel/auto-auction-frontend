@@ -4,13 +4,21 @@ import Input from '../../components/Input/Input';
 import Dropdown from '../../components/MainDropdown/Dropdown';
 import SecondaryButton from '../../components/SecondaryButton/SecondaryButton';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
-import porsche from '../../assets/testPorsche.svg';
+import FileUpload from '../../components/FileUpload/FileUpload';
 
 
 const Post = props => {
 	const [AuctionData, setAuctionData] = useState({
 
 	})
+
+	const [carData, setCarData] = useState({
+		make: ''
+	})
+
+	const handleMakeChange = event => {
+		setCarData({ ...carData, make: event.target.value })
+	}
 
 	return (
 		<section className={style.PostPageWrapper}>
@@ -31,6 +39,8 @@ const Post = props => {
 							width={360}
 							label='ex: Toyota, BMW, Porsche, Tesla etc'
 							placeholder='Car make/manufacturer'
+							change={handleMakeChange}
+							value={carData.make}
 						/>
 
 						<Input
@@ -135,27 +145,8 @@ const Post = props => {
 
 				<div className={style.CarDetailFields}>
 					<div className={style.CarDetailInputsWrapper}>
-						<div>
-							<span
-								className={style.CarTextField}>
-								Add Image
-							</span>
 
-							<div
-								className={style.CarImageWrapper}
-							>
-								<img
-									src={porsche}
-									alt=""
-									className={style.CarImage}
-								/>
-
-								<PrimaryButton
-									text='choose image'
-									width={120}
-								/>
-							</div>
-						</div>
+						<FileUpload />
 
 						<div>
 							<span

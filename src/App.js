@@ -18,29 +18,11 @@ import {
 	Route
 } from 'react-router-dom';
 
-
-// const addUserToDatabase = useCallback(() => {
-// 	axios.post(`${API_URL}/users`, {
-// 		email: user.primaryEmailAddress.emailAddress,
-// 		username: user.username,
-// 		userID: user.id,
-// 		userProfileURL: user.profileImpageUrl,
-// 	}).then(
-// 		res => console.log(res)
-// 	).catch(err => err)
-// }, [user])
-
-
-// function CreateUser() {
-// 	const { address } = useAccount();
-// 	console.log(address);
-// }
-
 const API_URL = 'http://localhost:8080'
 
 
 function App() {
-	const { address } = useAccount()
+const { address } = useAccount()
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
 	const formattedDate = currentDate.toISOString();
@@ -51,7 +33,7 @@ function App() {
 			createdAt: formattedDate,
 			role: 'member'
 		}).then(
-			// 		res => console.log(res)
+			// res => console.log(res)
 		).catch(err => err)
 	}
 

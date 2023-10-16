@@ -1,0 +1,18 @@
+.CarTextField {
+	color: #FFF;
+	font-size: 0.8em;
+	text-align: left;
+	display: block;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.CarImageWrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.CarImage{
+	width: 480px;
+}

@@ -49,6 +49,7 @@
 	margin-top: 10px;
 }
 
+
 .CarDetailInputsWrapper{
 	display: flex;
 	flex-direction: column;
@@ -62,14 +63,4 @@
 
 .ButtonWrapper{
 	margin: 200px 0;
-}
-
-.CarImageWrapper{
-	display: flex;
-	flex-direction: column;
-	gap: 25px;
-}
-
-.CarImage{
-	width: 480px;
 }

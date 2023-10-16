@@ -15,6 +15,8 @@ const Input = props => {
 				type="text"
 				placeholder={props.placeholder}
 				className={style.Input}
+				onChange={props.change}
+				value={props.value}
 			/>
 		</div>
 	)
