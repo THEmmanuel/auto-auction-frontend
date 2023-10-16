@@ -5,18 +5,15 @@ import PrimaryButton from '../PrimaryButton/PrimaryButton';
 
 import porsche from '../../assets/testPorsche.svg';
 
-const FileUpload = () => {
+const FileUpload = (props) => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [uploadStatus, setUploadStatus] = useState('');
 
+	const API_URL = 'http://localhost:8080'
+
+
 	// Create a FormData object to send the file
 	const handleImageUpload = (event) => {
-		const file = event.target.files[0];
-		setSelectedImage(URL.createObjectURL(file));
-
-		const formData = new FormData();
-		formData.append('image', file);
-
 
 	}
 
@@ -35,6 +32,10 @@ const FileUpload = () => {
 				{uploadStatus === 'uploading' && <p>Uploading...</p>}
 				{uploadStatus === 'uploaded' && <p>Uploaded</p>}
 				{selectedImage && <img src={selectedImage} alt="Uploaded" className={style.CarImage} />}
+				<PrimaryButton
+					text="Submit"
+					width={200}
+				/>
 			</div>
 		</div>
 	)
