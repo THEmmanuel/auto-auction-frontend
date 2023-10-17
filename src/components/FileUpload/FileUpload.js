@@ -14,6 +14,8 @@ const FileUpload = (props) => {
 
 	const API_URL = 'http://localhost:8080'
 
+	let uploadedText = ''
+	let uploadingText = ''
 
 	// Create a FormData object to send the file
 	const handleImageUpload = async (event) => {
@@ -22,11 +24,13 @@ const FileUpload = (props) => {
 
 		const cid = await client.put(files, {
 			onRootCidReady: localCid => {
-				console.log('uploading files' + localCid)
+				uploadingText = 'uploading files' + localCid
+
 			},
-			onStoredChunk: bytes => console.log('uplpad ' + bytes.toLocaleString() + 'to web3 storage')
+			onStoredChunk: bytes => {
+				uploadedText = 'uploaded' + bytes.toLocaleString()
+			}
 		})
-		console.log('stuff is now on web3 storage' + cid)
 		console.log(`https://dweb.link/ipfs/${cid}`)
 	}
 
@@ -43,11 +47,15 @@ const FileUpload = (props) => {
 			>
 				<input
 					type="file"
-					onChange={e => setFiles(e.target.files)}
+					onChange={e => {
+						const file = e.target.files[0]
+						setFiles(file)
+						setSelectedImage(URL.createObjectURL(file))
+					}}
 					className={style.ImageUpload} />
 
-				{uploadStatus === 'uploading' && <p>Uploading...</p>}
-				{uploadStatus === 'uploaded' && <p>Uploaded</p>}
+				{uploadStatus === 'uploading' && <p>{uploadingText}</p>}
+				{uploadStatus === 'uploaded' && <p>{uploadedText}</p>}
 				{selectedImage && <img src={selectedImage} alt="Uploaded" className={style.CarImage} />}
 				<PrimaryButton
 					text="Submit"
