@@ -39,7 +39,7 @@ const Post = props => {
 		fuelType: '',
 		engine: '',
 		description: '',
-		driveTrain: 'AWD',
+		drivetrain: 'AWD',
 		interiorColor: '',
 		exteriorColor: '',
 		horsepower: '',
@@ -163,8 +163,10 @@ const Post = props => {
 								<Dropdown
 									DropdownTitle='Drivetrain'
 									dataArray={["AWD", "RWD", "FWD", "4x4", "4WD"]}
-									// change={handleRoleChange}
-									defaultValue={''}
+									defaultValue={'AWD'}
+									change={selectedValue => handleCarDropdownChange('drivetrain', selectedValue)}
+
+
 								/>
 
 								<Input
@@ -210,14 +212,17 @@ const Post = props => {
 								<Dropdown
 									DropdownTitle='Are you the owner or a dealer for this car?'
 									dataArray={["Owner", "Buyer"]}
-									// change={handleRoleChange}
-									defaultValue={'test'}
+									defaultValue='Owner'
+									change={selectedValue => handleCarDropdownChange('sellerType', selectedValue)}
+
 								/>
 
 								<Input
 									width={360}
 									label='Location'
 									placeholder='ex:Lagos, Nigeria. Redmond, WA.'
+									change={(e) => handleUserChange('location', e.target.value)}
+									value={carData.location}
 								/>
 							</div>
 						</div>
