@@ -9,16 +9,60 @@ import FileUpload from '../../components/FileUpload/FileUpload';
 
 const Post = props => {
 	const [AuctionData, setAuctionData] = useState({
-
+		car: '',
+		creatorWalletAddress: '',
+		status: '',
+		NFTMinted: false,
+		NFT: '',
+		bids: [],
+		initialPrice: '',
+		reservePrice: '',
+		auctionDuration: '',
+		auctionEndTime: '',
+		winBid: ''
 	})
 
 	const [carData, setCarData] = useState({
-		make: ''
+		make: '',
+		imageURL: '',
+		model: '',
+		year: '',
+		VIN: '',
+		mileage: '',
+		bodyType: '',
+		transmission: '',
+		fuelType: '',
+		engine: '',
+		description: '',
+		driveTrain: '',
+		interiorColor: '',
+		exteriorColor: '',
+		horsepower: '',
+		sellerType: '',
+		ownerWalletAddress: ''
 	})
 
-	const handleMakeChange = event => {
-		setCarData({ ...carData, make: event.target.value })
+	const [userData, setUserData] = useState({
+		email: '',
+		fullname: '',
+		location: '',
+		createdAuctions: []
+		// push the created auction id when created
+	})
+
+
+
+	const handleCarChange = (field, value) => {
+		setCarData({ ...carData, [field]: value });
 	}
+
+	const handleCarDropdownChange = (field, selectedValue) => {
+		setCarData({ ...carData, [field]: selectedValue });
+	}
+
+
+
+
 
 	return (
 		<section className={style.PostPageWrapper}>
@@ -33,13 +77,15 @@ const Post = props => {
 							width={360}
 							label='VIN: Vehicle Identification number'
 							placeholder='ex: 4Y1SL65848Z411439'
+							change={(e) => handleCarChange('VIN', e.target.value)}
+							value={carData.VIN}
 						/>
 
 						<Input
 							width={360}
 							label='ex: Toyota, BMW, Porsche, Tesla etc'
 							placeholder='Car make/manufacturer'
-							change={handleMakeChange}
+							change={(e) => handleCarChange('make', e.target.value)}
 							value={carData.make}
 						/>
 
@@ -47,32 +93,38 @@ const Post = props => {
 							width={360}
 							label='Car model'
 							placeholder='ex: Supra, M3, 911, Model 3 etc'
+							change={(e) => handleCarChange('model', e.target.value)}
+							value={carData.model}
 						/>
 
 						<Input
 							width={360}
 							label='Car model year'
 							placeholder='ex: 2012'
+							change={(e) => handleCarChange('year', e.target.value)}
+							value={carData.year}
 						/>
 
 						<Input
 							width={360}
 							label='Car mileage in kilometers'
 							placeholder='ex: 12000, 35000'
+							change={(e) => handleCarChange('mileage', e.target.value)}
+							value={carData.mileage}
 						/>
 
 						<Dropdown
 							DropdownTitle='Car Category'
 							dataArray={['Sedans', 'SUVs', 'Coupes', 'Hatchbacks', 'Convertibles', 'Wagons', 'Trucks', 'Vans/Minivans', 'Classics']}
 							// change={handleRoleChange}
-							defaultValue={'test'}
+							defaultValue={'Sedans'}
 						/>
 
 						<Dropdown
 							DropdownTitle='Bid time in hrs. The bid closes and highest bidder gets the auction in:'
 							dataArray={[24, 48, 72, 96]}
 							// change={handleRoleChange}
-							defaultValue={'test'}
+							defaultValue={24}
 						/>
 
 						<Input
@@ -93,6 +145,8 @@ const Post = props => {
 							width={360}
 							label='Engine Type'
 							placeholder='ex: Twin Turbo V6, Bi-Turbo V8, Supercharged V12'
+							change={(e) => handleCarChange('engine', e.target.value)}
+							value={carData.engine}
 						/>
 
 						<Dropdown
@@ -106,24 +160,40 @@ const Post = props => {
 							width={360}
 							label='Transmission'
 							placeholder='ex: 5-Speed Manual'
+							change={(e) => handleCarChange('transmission', e.target.value)}
+							value={carData.transmission}
 						/>
 
 						<Input
 							width={360}
 							label='Exterior colour'
 							placeholder='ex: Blue'
+							change={(e) => handleCarChange('exteriorColor', e.target.value)}
+							value={carData.exteriorColor}
 						/>
 
 						<Input
 							width={360}
 							label='Interior Colour'
 							placeholder='ex: White on Black'
+							change={(e) => handleCarChange('interiorColor', e.target.value)}
+							value={carData.interiorColor}
 						/>
 
 						<Input
 							width={360}
 							label='Horsepower'
 							placeholder='ex: 750hp'
+							change={(e) => handleCarChange('horsepower', e.target.value)}
+							value={carData.horsepower}
+						/>
+
+						<Input
+							width={360}
+							label='Fuel Type'
+							placeholder='ex: diesel, petrol'
+							change={(e) => handleCarChange('fuelType', e.target.value)}
+							value={carData.fuelType}
 						/>
 
 						<Dropdown
@@ -158,6 +228,8 @@ const Post = props => {
 								name=""
 								className={style.CarDescriptionContainer}
 								placeholder="Brief overview of the car's condition and features) include  additional features or options (e.g., sunroof, leather seats, navigation system)"
+								onChange={e => handleCarChange('description', e.target.value)}
+								value={carData.description}
 							>
 							</textarea>
 						</div>
