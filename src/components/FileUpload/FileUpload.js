@@ -11,6 +11,7 @@ const FileUpload = (props) => {
 	const [uploadStatus, setUploadStatus] = useState('');
 	const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMwYmQ0ODE1M0ZBOTYxOGZmZTdGNjEzODk2ODJCZDc1YTY4NkFjNGIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTc0NDkxMzU3NzQsIm5hbWUiOiJhdXRvLWF1Y3Rpb24ifQ.wIjf5oyG2GQ9llHl7I0Xdk6WxoFbFj87UelGEh-O74I';
 	const [files, setFiles] = useState([]);
+	const [fileName, setFileName] = useState('')
 
 	const API_URL = 'http://localhost:8080'
 
@@ -24,14 +25,15 @@ const FileUpload = (props) => {
 
 		const cid = await client.put(files, {
 			onRootCidReady: localCid => {
+				setUploadStatus('uploading')
 				uploadingText = 'uploading files' + localCid
-
 			},
 			onStoredChunk: bytes => {
+				setUploadStatus('uploaded')
 				uploadedText = 'uploaded' + bytes.toLocaleString()
 			}
 		})
-		console.log(`https://dweb.link/ipfs/${cid}`)
+		setSelectedImage(`https://${cid}.ipfs.w3s.link/${fileName}`)
 	}
 
 
@@ -49,13 +51,14 @@ const FileUpload = (props) => {
 					type="file"
 					onChange={e => {
 						const file = e.target.files[0]
-						setFiles(file)
+						setFileName(file.name)
+						setFiles(e.target.files)
 						setSelectedImage(URL.createObjectURL(file))
 					}}
 					className={style.ImageUpload} />
 
-				{uploadStatus === 'uploading' && <p>{uploadingText}</p>}
-				{uploadStatus === 'uploaded' && <p>{uploadedText}</p>}
+				{uploadStatus === 'uploading' && <p>uploading</p>}
+				{uploadStatus === 'uploaded' && <p>uploaded</p>}
 				{selectedImage && <img src={selectedImage} alt="Uploaded" className={style.CarImage} />}
 				<PrimaryButton
 					text="Submit"
