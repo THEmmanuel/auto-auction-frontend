@@ -5,6 +5,7 @@ import Dropdown from '../../components/MainDropdown/Dropdown';
 import SecondaryButton from '../../components/SecondaryButton/SecondaryButton';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import FileUpload from '../../components/FileUpload/FileUpload';
+import carCategories from '../../data/carCategories';
 
 
 const Post = props => {
@@ -29,16 +30,16 @@ const Post = props => {
 		year: '',
 		VIN: '',
 		mileage: '',
-		bodyType: '',
+		bodyType: carCategories[0].categoryName,
 		transmission: '',
 		fuelType: '',
 		engine: '',
 		description: '',
-		driveTrain: '',
+		driveTrain: 'AWD',
 		interiorColor: '',
 		exteriorColor: '',
 		horsepower: '',
-		sellerType: '',
+		sellerType: 'Owner',
 		ownerWalletAddress: ''
 	})
 
@@ -59,8 +60,6 @@ const Post = props => {
 	const handleCarDropdownChange = (field, selectedValue) => {
 		setCarData({ ...carData, [field]: selectedValue });
 	}
-
-
 
 
 
@@ -116,7 +115,7 @@ const Post = props => {
 						<Dropdown
 							DropdownTitle='Car Category'
 							dataArray={['Sedans', 'SUVs', 'Coupes', 'Hatchbacks', 'Convertibles', 'Wagons', 'Trucks', 'Vans/Minivans', 'Classics']}
-							// change={handleRoleChange}
+							change={selectedValue => handleCarDropdownChange('bodyType', selectedValue)}
 							defaultValue={'Sedans'}
 						/>
 
@@ -153,7 +152,7 @@ const Post = props => {
 							DropdownTitle='Drivetrain'
 							dataArray={["AWD", "RWD", "FWD", "4x4", "4WD"]}
 							// change={handleRoleChange}
-							defaultValue={'test'}
+							defaultValue={''}
 						/>
 
 						<Input
