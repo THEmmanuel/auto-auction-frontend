@@ -80,6 +80,10 @@ const Post = props => {
 		setAuctionData({ ...auctionData, [field]: selectedValue });
 	}
 
+	const handleImageUpload = (imageURL) => {
+		setCarData({ ...carData, imageURL: imageURL });
+	}
+
 
 
 	return (
@@ -245,7 +249,9 @@ const Post = props => {
 						<div className={style.CarDetailFields}>
 							<div className={style.CarDetailInputsWrapper}>
 
-								<FileUpload />
+								<FileUpload
+									onImageUpload={handleImageUpload}
+								/>
 
 								<div>
 									<span

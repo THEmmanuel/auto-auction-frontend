@@ -15,25 +15,27 @@ const FileUpload = (props) => {
 
 	const API_URL = 'http://localhost:8080'
 
-	let uploadedText = ''
-	let uploadingText = ''
-
 	// Create a FormData object to send the file
 	const handleImageUpload = async (event) => {
 		// event.preventDefault()
-		const client = new Web3Storage({ token })
+		const client = new Web3Storage({ token });
 
-		const cid = await client.put(files, {
-			onRootCidReady: localCid => {
-				setUploadStatus('uploading')
-				uploadingText = 'uploading files' + localCid
-			},
-			onStoredChunk: bytes => {
-				setUploadStatus('uploaded')
-				uploadedText = 'uploaded' + bytes.toLocaleString()
-			}
-		})
-		setSelectedImage(`https://${cid}.ipfs.w3s.link/${fileName}`)
+		try {
+			const cid = await client.put(files, {
+				onRootCidReady: localCid => {
+					setUploadStatus('uploading');
+				},
+				onStoredChunk: bytes => {
+					setUploadStatus('uploaded');
+				}
+			});
+
+			const uploadedImageURL = `https://${cid}.ipfs.w3s.link/${fileName}`;
+			setSelectedImage(uploadedImageURL);
+			props.onImageUpload(uploadedImageURL);
+		} catch (error) {
+			console.error("Error uploading image:", error);
+		}
 	}
 
 
@@ -57,8 +59,15 @@ const FileUpload = (props) => {
 					}}
 					className={style.ImageUpload} />
 
-				{uploadStatus === 'uploading' && <p>uploading</p>}
-				{uploadStatus === 'uploaded' && <p>uploaded</p>}
+				{uploadStatus === 'uploading' &&
+					<p className={style.UploadText}>
+						uploading
+					</p>}
+
+				{uploadStatus === 'uploaded' &&
+					<p className={style.UploadText}>
+						uploaded
+					</p>}
 				{selectedImage && <img src={selectedImage} alt="Uploaded" className={style.CarImage} />}
 				<PrimaryButton
 					text="Submit"
