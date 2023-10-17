@@ -13,16 +13,17 @@ const Post = props => {
 	const { address, isDisconnected } = useAccount()
 
 
-	const [AuctionData, setAuctionData] = useState({
+	const [auctionData, setAuctionData] = useState({
 		car: '',
 		creatorWalletAddress: address,
-		status: '',
+		status: 'approved',
 		NFTMinted: false,
 		NFT: '',
 		bids: [],
 		initialPrice: '',
 		reservePrice: '',
 		auctionDuration: '',
+		auctionStartTime: '',
 		auctionEndTime: '',
 		winBid: ''
 	})
@@ -65,8 +66,18 @@ const Post = props => {
 		setCarData({ ...carData, [field]: selectedValue });
 	}
 
+
 	const handleUserChange = (field, value) => {
-		setCarData({ ...userData, [field]: value });
+		setUserData({ ...userData, [field]: value });
+	}
+
+
+	const handleAuctionChange = (field, value) => {
+		setAuctionData({ ...auctionData, [field]: value });
+	}
+
+	const handleAuctionDropdownChange = (field, selectedValue) => {
+		setAuctionData({ ...auctionData, [field]: selectedValue });
 	}
 
 
@@ -134,7 +145,7 @@ const Post = props => {
 								<Dropdown
 									DropdownTitle='Bid time in hrs. The bid closes and highest bidder gets the auction in:'
 									dataArray={[24, 48, 72, 96]}
-									// change={handleRoleChange}
+									change={selectedValue => handleAuctionDropdownChange('auctionDuration', selectedValue)}
 									defaultValue={24}
 								/>
 
@@ -142,12 +153,16 @@ const Post = props => {
 									width={360}
 									label='Email address'
 									placeholder='ex: you@example.com'
+									change={(e) => handleUserChange('email', e.target.value)}
+									value={carData.email}
 								/>
 
 								<Input
 									width={360}
 									label='Full name'
 									placeholder='ex: John Doe'
+									change={(e) => handleUserChange('fullname', e.target.value)}
+									value={userData.fullname}
 								/>
 							</div>
 
@@ -165,8 +180,6 @@ const Post = props => {
 									dataArray={["AWD", "RWD", "FWD", "4x4", "4WD"]}
 									defaultValue={'AWD'}
 									change={selectedValue => handleCarDropdownChange('drivetrain', selectedValue)}
-
-
 								/>
 
 								<Input
@@ -256,6 +269,8 @@ const Post = props => {
 											width={620}
 											label='Reserve price in $ (auction is cancelled if this price is not met)'
 											placeholder='ex: 35000'
+											change={(e) => handleAuctionChange('reservePrice', e.target.value)}
+											value={carData.reservePrice}
 										/>
 										<span
 											className={style.CarTextField}
@@ -267,8 +282,10 @@ const Post = props => {
 									<div>
 										<Input
 											width={620}
-											label='Reserve price in $ (auction is cancelled if this price is not met)'
+											label='Initial price in $ (lowest bid price)'
 											placeholder='ex: 35000'
+											change={(e) => handleAuctionChange('initialPrice', e.target.value)}
+											value={carData.initialPrice}
 										/>
 										<span
 											className={style.CarTextField}
