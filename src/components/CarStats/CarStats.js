@@ -7,44 +7,44 @@ const CarStats = props => {
 			<div className={style.CarStatInfoWrapper}>
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Make</span>
-					<span className={style.CarStat}>Ferrari</span>
+					<span className={style.CarStat}>{props.make}</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Model</span>
-					<span className={style.CarStat}>488 Pista</span>
+					<span className={style.CarStat}>{props.model}</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Mileage</span>
-					<span className={style.CarStat}>12,000km</span>
+					<span className={style.CarStat}>{props.mileage}</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>VIN</span>
-					<span className={style.CarStat}>JN1CZ24A9LX004371</span>
+					<span className={style.CarStat}>{props.VIN}</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Engine</span>
 					<span className={style.CarStat}>
-						3.9L Turbocharged V8
+						{props.engine}
 					</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Transmission</span>
-					<span className={style.CarStat}>Automatic (7-Speed)</span>
+					<span className={style.CarStat}>{props.transmission}</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Body Style</span>
-					<span className={style.CarStat}>Coupe</span>
+					<span className={style.CarStat}>{props.bodyType}</span>
 				</div>
 
 				<div className={style.CarStatInfo}>
 					<span className={style.CarStatText}>Drivetrain</span>
-					<span className={style.CarStat}>Rear-wheel Drive</span>
+					<span className={style.CarStat}>{props.drivetrain}</span>
 				</div>
 			</div>
 
@@ -55,7 +55,7 @@ const CarStats = props => {
 							Seller Wallet Address
 						</span>
 						<span className={style.CarStat}>
-							0xdB055877e6c13b6A6B25aBcAA29B393777dD0a73
+						{props.ownerWallet}
 						</span>
 					</div>
 
@@ -72,7 +72,7 @@ const CarStats = props => {
 					<div className={style.CarStatInfo}>
 						<span className={style.CarStatText}>Exterior Colour</span>
 						<span className={style.CarStat}>
-							Nero DS/Rosso Corsa
+						{props.exteriorColor}
 						</span>
 					</div>
 
@@ -81,7 +81,7 @@ const CarStats = props => {
 							Interior Colour
 						</span>
 						<span className={style.CarStat}>
-							Nero
+						{props.interiorColor}
 						</span>
 					</div>
 
@@ -90,7 +90,7 @@ const CarStats = props => {
 							Horsepower
 						</span>
 						<span className={style.CarStat}>
-							750hp
+						{props.horsepower} hp
 						</span>
 					</div>
 
@@ -99,7 +99,7 @@ const CarStats = props => {
 							Seller Type
 						</span>
 						<span className={style.CarStat}>
-							Owner
+							{props.sellerType}
 						</span>
 					</div>
 				</div>

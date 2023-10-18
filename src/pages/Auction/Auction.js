@@ -61,17 +61,36 @@ const Auction = props => {
 
 							<div className={style.CarPrice}>
 								<div className={style.BidDetails}>
-									<span className={style.BidText}>
-										Highest bid
-									</span>
-									<div className={style.BidPriceWrapper}>
-										<span className={style.BidPriceETH}>
-											30.8ETH
-										</span>
+									<div>
+										<div>
+											<span className={style.BidText}>
+												Initial price
+											</span>
+											<div className={style.BidPriceWrapper}>
+												<span className={style.BidPriceETH}>
+													30.8ETH
+												</span>
 
-										<span className={style.BidPriceDollars}>
-											$427000
-										</span>
+												<span className={style.BidPriceDollars}>
+													$427000
+												</span>
+											</div>
+										</div>
+
+										<div>
+											<span className={style.BidText}>
+												Highest bid
+											</span>
+											<div className={style.BidPriceWrapper}>
+												<span className={style.BidPriceETH}>
+													30.8ETH
+												</span>
+
+												<span className={style.BidPriceDollars}>
+													$427000
+												</span>
+											</div>
+										</div>
 									</div>
 
 									<div className={style.BidTimeWrapper}>
@@ -126,8 +145,20 @@ const Auction = props => {
 
 						<div className={style.CarDetails}>
 							<div>
-								<CarStats 
-									
+								<CarStats
+									make={auction.carData.make}
+									model={auction.carData.model}
+									VIN={auction.carData.VIN}
+									engine={auction.carData.engine}
+									mileage={auction.carData.mileage}
+									bodyType={auction.carData.bodyType}
+									transmission={auction.carData.transmission}
+									drivetrain={auction.carData.drivetrain}
+									horsepower={auction.carData.horsepower}
+									ownerWallet={auction.carData.ownerWalletAddress}
+									exteriorColor={auction.carData.exteriorColor}
+									interiorColor={auction.carData.interiorColor}
+									sellerType={auction.carData.sellerType}
 								/>
 							</div>
 
@@ -137,8 +168,7 @@ const Auction = props => {
 								</span>
 
 								<span className={style.CarDetailsText}>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea natus recusandae ipsum ut necessitatibus eum repellat dolor minima, nulla dolorum corrupti voluptatem. Accusamus commodi, placeat ea autem voluptatem ratione maiores!
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea natus recusandae ipsum ut necessitatibus eum repellat dolor minima, nulla dolorum corrupti voluptatem. Accusamus commodi, placeat ea autem voluptatem ratione maiores nulla dolorum corrupti voluptatem. Accusamus commodi, placeat ea autem voluptatem ratione maiores! placeat ea autem voluptatem ratione maiores!
+									{auction.carData.description}
 								</span>
 							</div>
 						</div>
