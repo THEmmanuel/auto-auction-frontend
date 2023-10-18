@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import style from './Auction.module.css';
 import BidCard from '../../components/BidCard/BidCard';
 import TimeIcon from '../../assets/timerIcon.svg';
@@ -6,8 +8,37 @@ import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import testPorsche from '../../assets/testPorsche.svg'
 import CarStats from '../../components/CarStats/CarStats';
 
+const API_URL = 'http://localhost:8080'
 
 const Auction = props => {
+	const { id } = useParams();
+	const [auction, setAuction] = useState({})
+
+	const getAuction = () => {
+		axios.get(`${API_URL}/auctions/${id}`)
+			.then((res) => {
+				const auction = res.data;
+				axios.get(`${API_URL}/cars/${auction.car}`)
+					.then((carRes) => {
+						const combinedData = {
+							...auction,
+							carData: carRes.data,
+						};
+						setAuction(combinedData);
+					})
+					.catch((carError) => {
+						// Handle errors in fetching car data
+					});
+			})
+			.catch((error) => {
+				// Handle errors in fetching the specific auction
+			});
+	};
+
+	useEffect(() => {
+		getAuction()
+	}, [])
+
 	return (
 		<section className={style.AuctionWrapper}>
 			<div className={style.Auction}>

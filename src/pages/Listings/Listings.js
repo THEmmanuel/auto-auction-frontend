@@ -52,11 +52,12 @@ const Listings = props => {
 							<ListCard
 								make={auction.carData.make}
 								model={auction.carData.model}
-								engine= {auction.carData.engine}
-								transmission = {auction.carData.transmission}
-								price = {auction.initialPrice}
-								time = {auction.auctionDuration}
-								image = {auction.carData.imageURL}
+								engine={auction.carData.engine}
+								transmission={auction.carData.transmission}
+								price={auction.initialPrice}
+								time={auction.auctionDuration}
+								image={auction.carData.imageURL}
+								year={auction.carData.year}
 							/>
 						</Link>
 					)

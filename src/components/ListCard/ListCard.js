@@ -16,7 +16,7 @@ const ListCard = props => {
 					<div>
 						<span
 							className={style.ListCardCarName}>
-							{`${props.make} ${props.model}`} 
+							{`${props.year} ${props.make} ${props.model}`} 
 						</span>
 
 						<div className={style.CarAttributes}>
