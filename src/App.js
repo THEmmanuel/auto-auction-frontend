@@ -63,7 +63,7 @@ const { address } = useAccount()
 
 					<Route
 						exact
-						path='/auction'
+						path='/auction/:id'
 						element=<Auction />
 					>
 					</Route>

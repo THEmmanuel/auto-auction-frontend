@@ -9,14 +9,14 @@ import testPorsche from '../../assets/testPorsche.svg';
 const ListCard = props => {
 	return (
 		<div className={style.ListCardWrapper}>
-			<img src={testPorsche} alt="" />
+			<img src={props.image} alt="" />
 
 			<div className={style.ListCardContentWrapper}>
 				<div className={style.ListCardContent}>
 					<div>
 						<span
 							className={style.ListCardCarName}>
-							{props.carMake} 
+							{`${props.make} ${props.model}`} 
 						</span>
 
 						<div className={style.CarAttributes}>
@@ -30,7 +30,7 @@ const ListCard = props => {
 								<span
 									className={style.CarAttribute}
 								>
-									engine type
+									{props.engine}
 								</span>
 							</div>
 
@@ -42,7 +42,7 @@ const ListCard = props => {
 								/>
 
 								<span className={style.CarAttribute}>
-									gear type
+									{props.transmission}
 								</span>
 							</div>
 						</div>
@@ -50,11 +50,11 @@ const ListCard = props => {
 
 					<div className={style.CarCurrentBidWrapper}>
 						<span className={style.CarCurrentBidTitle}>
-							Current Bid:
+							Initial Bid:
 						</span>
 
 						<span className={style.CarCurrentBidPrice}>
-							$35,000
+							${props.price}
 						</span>
 					</div>
 				</div>
@@ -68,7 +68,7 @@ const ListCard = props => {
 						/>
 
 						<span className={style.CarData}>
-							time
+							{props.time}
 						</span>
 					</div>
 

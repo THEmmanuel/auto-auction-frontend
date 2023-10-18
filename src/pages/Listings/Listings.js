@@ -21,8 +21,6 @@ const Listings = props => {
 
 				Promise.all(carDataPromises)
 					.then((carData) => {
-						// Now you have both auction data and associated car data
-						// You can combine or process the data as needed
 						const combinedData = auctionList.map((auction, index) => ({
 							...auction,
 							carData: carData[index].data,
@@ -50,9 +48,15 @@ const Listings = props => {
 			<section className={style.ListingsWrapper}>
 				{
 					auctions.map((auction) =>
-						<Link to='/auction'>
-							<ListCard 
-								carMake = {auction.carData.make}
+						<Link to={`/auction/${auction._id}`}>
+							<ListCard
+								make={auction.carData.make}
+								model={auction.carData.model}
+								engine= {auction.carData.engine}
+								transmission = {auction.carData.transmission}
+								price = {auction.initialPrice}
+								time = {auction.auctionDuration}
+								image = {auction.carData.imageURL}
 							/>
 						</Link>
 					)
