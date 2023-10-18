@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import style from './Post.module.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/MainDropdown/Dropdown';
@@ -9,8 +10,14 @@ import carCategories from '../../data/carCategories';
 import { useAccount } from 'wagmi';
 
 
+const API_URL = 'http://localhost:8080'
+
+
 const Post = props => {
 	const { address, isDisconnected } = useAccount()
+	const currentDate = new Date();
+	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
+	const formattedDate = currentDate.toISOString();
 
 
 	const [auctionData, setAuctionData] = useState({
@@ -23,7 +30,7 @@ const Post = props => {
 		initialPrice: '',
 		reservePrice: '',
 		auctionDuration: '',
-		auctionStartTime: '',
+		auctionStartTime: formattedDate,
 		auctionEndTime: '',
 		winBid: ''
 	})
@@ -55,6 +62,53 @@ const Post = props => {
 		createdAuctions: []
 		// push the created auction id when created
 	})
+
+
+	const handleSubmit = () => {
+		// send the car data to the post route first.
+		const addCarToDatabase = () => {
+			axios.post(`${API_URL}/cars`, carData)
+				.then(res => {
+					console.log(res)
+					// get the id from the response.
+					const carId = res.data._id;
+					// Set the car key in the auctionData object
+					setAuctionData({ ...auctionData, car: carId });
+				})
+				.catch(err => err)
+		}
+
+		const addAuctionToDatabase = () => {
+			axios.post(`${API_URL}/auctions`, auctionData)
+				.then(res => {
+					addCarToDatabase()
+					console.log(res);
+					const auctionId = res.data._id;
+					// Update the user data in the state by spreading the existing values in createdAuctions and adding the new auctionId
+					setUserData(prevUserData => ({
+						...prevUserData,
+						createdAuctions: [...prevUserData.createdAuctions, auctionId]
+					}));
+				})
+				.catch(err => console.error(err));
+		}
+
+
+		const updateUserInfo = () => {
+			axios.patch(`${API_URL}/users/${address}`, userData)
+				.then(res => console.log(res))
+				.catch(err => err)
+		}
+
+
+		addAuctionToDatabase()
+		updateUserInfo()
+
+		// send the data to the auction post route.
+		// get the id from the response
+
+		// finally send the user info to the user post route, push the created auction id to the createdAuctions array.
+	}
 
 
 
@@ -228,7 +282,7 @@ const Post = props => {
 
 								<Dropdown
 									DropdownTitle='Are you the owner or a dealer for this car?'
-									dataArray={["Owner", "Buyer"]}
+									dataArray={["Owner", "Dealer"]}
 									defaultValue='Owner'
 									change={selectedValue => handleCarDropdownChange('sellerType', selectedValue)}
 
@@ -309,6 +363,7 @@ const Post = props => {
 						<SecondaryButton
 							text='Submit'
 							width={150}
+							click={handleSubmit}
 						/>
 					</div>
 				</div>
