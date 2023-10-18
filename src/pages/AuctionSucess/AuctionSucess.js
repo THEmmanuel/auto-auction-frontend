@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './AuctionSucess.module.css';
 import porsche from '../../assets/testPorsche.svg';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
@@ -32,15 +33,20 @@ const AuctionSucess = () => {
 			</span>
 
 			<div className={style.AuctionButtons}>
-				<PrimaryButton
-					text='View History'
-					width={150}
-				/>
+				<Link to='/history'>
+					<PrimaryButton
+						text='View History'
+						width={150}
+					/>
+				</Link>
 
-				<PrimaryButton
-					text='Go Home'
-					width={150}
-				/>
+				<Link to='/'>
+					<PrimaryButton
+						text='Go Home'
+						width={150}
+					/>
+				</Link>
+
 			</div>
 		</section>
 	)
