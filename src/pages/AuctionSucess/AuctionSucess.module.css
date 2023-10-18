@@ -2,6 +2,8 @@
 	color: #FFF;
 	display: flex;
 	flex-direction: column;
+	gap: 40px;
+	margin-top: 80px;
 }
 
 .AuctionCarInfoWrapper{
@@ -17,6 +19,7 @@
 .AuctionPriceWrapper{
 	display: flex;
 	flex-direction: column;
+	gap: 20px;
 }
 
 .AuctionButtons{
@@ -24,4 +27,23 @@
 	flex-direction: column;
 	gap: 20px;
 	margin: auto;
+}
+
+.AuctionPriceText{
+	color: #919191;
+}
+
+.AuctionPrice{
+	font-size: 1.8em;
+}
+
+.AuctionHeading{
+	margin-bottom: 20px;
+	color: #919191;
+}
+
+.AuctionText{
+	width: 50%;
+	margin: auto;
+	color: #919191;
 }

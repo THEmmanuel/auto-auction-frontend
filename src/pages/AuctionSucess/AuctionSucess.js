@@ -7,7 +7,9 @@ const AuctionSucess = () => {
 	return (
 		<section className={style.AuctionSuccessWrapper}>
 			<div className={style.AuctionCarInfoWrapper}>
-				<span>Awesome you just listed your [car] for sale</span>
+				<span className={style.AuctionHeading}>
+					Awesome you just listed your [car] for sale
+				</span>
 				<img
 					src={porsche}
 					alt=""
