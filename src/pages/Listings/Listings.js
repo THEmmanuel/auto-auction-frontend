@@ -9,7 +9,7 @@ const API_URL = 'http://localhost:8080'
 
 
 const Listings = props => {
-	const [auctions, setAuctions] = useState({})
+	const [auctions, setAuctions] = useState([])
 
 	const getAuctions = () => {
 		axios.get(`${API_URL}/auctions`)
@@ -42,15 +42,21 @@ const Listings = props => {
 	console.log(auctions);
 
 	useEffect(() => {
-		// getAuctions()
+		getAuctions()
 	}, [])
 
 	return (
 		<section>
 			<section className={style.ListingsWrapper}>
-				<Link to='/auction'>
-					<ListCard />
-				</Link>
+				{
+					auctions.map((auction) =>
+						<Link to='/auction'>
+							<ListCard 
+								carMake = {auction.carData.make}
+							/>
+						</Link>
+					)
+				}
 
 
 			</section>

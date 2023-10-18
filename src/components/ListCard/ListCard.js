@@ -6,7 +6,7 @@ import timerIcon from '../../assets/timerIcon.svg';
 import mapIcon from '../../assets/mapIcon.svg'
 import testPorsche from '../../assets/testPorsche.svg';
 
-const ListCard = () => {
+const ListCard = props => {
 	return (
 		<div className={style.ListCardWrapper}>
 			<img src={testPorsche} alt="" />
@@ -16,7 +16,7 @@ const ListCard = () => {
 					<div>
 						<span
 							className={style.ListCardCarName}>
-							Car name
+							{props.carMake} 
 						</span>
 
 						<div className={style.CarAttributes}>
