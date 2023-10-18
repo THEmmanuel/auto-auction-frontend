@@ -1,0 +1,27 @@
+.AuctionSuccessWrapper{
+	color: #FFF;
+	display: flex;
+	flex-direction: column;
+}
+
+.AuctionCarInfoWrapper{
+	display: flex;
+	flex-direction: column;
+}
+
+.AuctionCarImage{
+	width: 500px;
+	margin: auto;
+}
+
+.AuctionPriceWrapper{
+	display: flex;
+	flex-direction: column;
+}
+
+.AuctionButtons{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin: auto;
+}
