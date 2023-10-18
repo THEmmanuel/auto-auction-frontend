@@ -8,6 +8,7 @@ import Auction from './pages/Auction/Auction';
 import Listings from './pages/Listings/Listings';
 import Post from './pages/Post/Post';
 import History from './pages/History/History';
+import AuctionSucess from './pages/AuctionSucess/AuctionSucess';
 
 import NavBar from './components/NavBar/NavBar';
 import { useAccount } from 'wagmi';
@@ -85,6 +86,13 @@ const { address } = useAccount()
 						exact
 						path='/history'
 						element=<History />
+					>
+					</Route>
+
+					<Route
+						exact
+						path='/auction-added'
+						element=<AuctionSucess />
 					>
 					</Route>
 

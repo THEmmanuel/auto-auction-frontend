@@ -103,11 +103,6 @@ const Post = props => {
 
 		addAuctionToDatabase()
 		updateUserInfo()
-
-		// send the data to the auction post route.
-		// get the id from the response
-
-		// finally send the user info to the user post route, push the created auction id to the createdAuctions array.
 	}
 
 
