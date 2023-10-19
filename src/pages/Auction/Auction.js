@@ -96,27 +96,11 @@ const Auction = props => {
 		getAuction();
 	}, [id]);
 
-	const PlaceBidComponent = () => {
-		return (
-			<div className={style.BidPlacer}>
-				<span className={style.BidText}>Place Bid</span>
-				<div className={style.BidPlaceInputs}>
-					<Input
-						width={360}
-						label='Bid amount in $'
-						placeholder='ex: 40000'
-						change={handleBidAmountChange}
-						value={bid.bidAmount}
-					/>
-					<SecondaryButton
-						text='Contact Seller'
-						width={150}
-						click={() => placeBid()}
-					/>
-				</div>
-			</div>
-		)
-	}
+	// const PlaceBidComponent = () => {
+	// 	return (
+
+	// 	)
+	// }
 
 	return (
 		<section>
@@ -201,7 +185,25 @@ const Auction = props => {
 								</div>
 
 								{showBidPlacer ?
-									<PlaceBidComponent /> : null}
+									<div className={style.BidPlacer}>
+										<span className={style.BidText}>Place Bid</span>
+										<div className={style.BidPlaceInputs}>
+											<Input
+												width={360}
+												label='Bid amount in $'
+												placeholder='ex: 40000'
+												change={handleBidAmountChange}
+												value={bid.bidAmount}
+											/>
+
+											<SecondaryButton
+												text='Place your bid'
+												width={150}
+												click={() => placeBid()}
+											/>
+										</div>
+									</div>
+									: null}
 							</div>
 
 
