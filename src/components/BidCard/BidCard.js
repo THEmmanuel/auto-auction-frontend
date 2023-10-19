@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './BidCard.module.css';
 
-const BidCard = () => {
+const BidCard = props => {
 	return (
 		<div className={style.BidCardWrapper}>
 			<div className={style.BidCardContent}>
 				<div className={style.BidCardIcon} />
 
 				<span className={style.BidderWalletAddress}>
-					wallet address
+					{props.bidder}
 				</span>
 
 				<div className={style.BidAmountDetails}>
@@ -22,14 +22,14 @@ const BidCard = () => {
 						</span>
 
 						<span className={style.BidAmount}>
-							$35000
+							{props.bidAmount}
 						</span>
 					</div>
 				</div>
 			</div>
 
 			<span className={style.BidTime}>
-				Oct, 1. 2022. 5:12PM
+				{props.bidTimeStamp}
 			</span>
 		</div>
 	)

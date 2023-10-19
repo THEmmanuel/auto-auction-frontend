@@ -22,6 +22,7 @@ const Auction = props => {
 	const [auction, setAuction] = useState(null); // Initialize auction data as null
 	const [loading, setIsLoading] = useState(true);
 	const [showBidPlacer, setShowBidPlacer] = useState(false);
+	const [bids, setBids] = useState(null)
 
 	const [bid, setBid] = useState({
 		car: '',
@@ -96,10 +97,17 @@ const Auction = props => {
 	}
 
 
+	const getBids = () => {
+		axios.get(`${API_URL}/bids/auction/${id}`)
+			.then((res) => setBids(res.data))
+	}
+
+
 	const handleBidAmountChange = (e) => setBid({ ...bid, bidAmount: e.target.value });
 
 	useEffect(() => {
 		getAuction();
+		getBids()
 	}, [id]);
 
 	// const PlaceBidComponent = () => {
@@ -215,20 +223,27 @@ const Auction = props => {
 
 
 							<div className={style.BidContentWrapper}>
-								<span className={style.BidNumber}>
-									10 bids
-								</span>
-
-								<BidCard />
-								<BidCard />
-								<BidCard />
-								<BidCard />
-								<BidCard />
-								<BidCard />
-								<BidCard />
-								<BidCard />
-								<BidCard />
+								{bids === null ? (
+									<span>Loading...</span>
+								) : bids.length === 0 ? (
+									<span>No bids available.</span>
+								) : (
+									<div>
+										<span className={style.BidNumber}>
+											{bids.length} bids
+										</span>
+										{bids.map((bid) => (
+											<BidCard
+												key={bid._id} // You should use a unique key for each element when mapping.
+												bidder={bid.bidder}
+												bidAmount={bid.bidAmount}
+												bidTimeStamp={bid.bidTimestamp}
+											/>
+										))}
+									</div>
+								)}
 							</div>
+
 						</div>
 
 						<div className={style.CarDetails}>
