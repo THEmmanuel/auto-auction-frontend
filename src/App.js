@@ -8,7 +8,7 @@ import Auction from './pages/Auction/Auction';
 import Listings from './pages/Listings/Listings';
 import Post from './pages/Post/Post';
 import History from './pages/History/History';
-import AuctionSucess from './pages/AuctionSucess/AuctionSucess';
+import AuctionSuccess from './pages/AuctionSucess/AuctionSucess';
 
 import NavBar from './components/NavBar/NavBar';
 import { useAccount } from 'wagmi';
@@ -23,7 +23,7 @@ const API_URL = 'http://localhost:8080'
 
 
 function App() {
-const { address } = useAccount()
+	const { address } = useAccount()
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
 	const formattedDate = currentDate.toISOString();
@@ -91,8 +91,8 @@ const { address } = useAccount()
 
 					<Route
 						exact
-						path='/auction-added'
-						element=<AuctionSucess />
+						path='/auction-added/:auctionId/:carId'
+						element=<AuctionSuccess />
 					>
 					</Route>
 

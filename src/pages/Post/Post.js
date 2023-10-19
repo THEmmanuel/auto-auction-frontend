@@ -65,64 +65,6 @@ const Post = props => {
 		// push the created auction id when created
 	})
 
-
-	// const handleSubmit = () => {
-	// 	// Step 1: Add the car to the database
-	// 	const addCarToDatabase = () => {
-	// 		axios.post(`${API_URL}/cars`, carData)
-	// 			.then(res => {
-	// 				console.log("Car added:", res.data);
-	// 				const carId = res.data._id;
-	// 				// Step 2: Set the car key in the auctionData object
-	// 				setAuctionData({ ...auctionData, car: carId });
-	// 			})
-	// 			.catch(err => {
-	// 				console.error("Error adding car:", err);
-	// 			});
-	// 	}
-
-	// 	// Step 4: Add the auction to the database
-	// 	const addAuctionToDatabase = () => {
-	// 		axios.post(`${API_URL}/auctions`, auctionData)
-	// 			.then(res => {
-	// 				console.log("Auction added:", res.data);
-	// 				const auctionId = res.data._id;
-	// 				// Step 5: Update the user data in the state
-	// 				setUserData(prevUserData => ({
-	// 					...prevUserData,
-	// 					createdAuctions: [...prevUserData.createdAuctions, auctionId]
-	// 				}));
-	// 			})
-	// 			.catch(err => {
-	// 				console.error("Error adding auction:", err);
-	// 			});
-	// 	}
-
-	// 	// Step 7: Update user information
-	// 	const updateUserInfo = () => {
-	// 		axios.patch(`${API_URL}/users/${address}`, userData)
-	// 			.then(res => {
-	// 				console.log("User info updated:", res.data);
-	// 				// After user info is updated, navigate to '/auction-added'
-	// 				navigate('/auction-added');
-	// 			})
-	// 			.catch(err => {
-	// 				console.error("Error updating user info:", err);
-	// 			});
-	// 	}
-
-	// 	// Start the process by adding the car
-	// 	addCarToDatabase();
-	// 	addAuctionToDatabase();
-	// 	updateUserInfo();
-	// }
-
-
-
-
-
-
-
 	const handleSubmit = async () => {
 		try {
 			// Step 1: Add the car to the database
@@ -140,7 +82,7 @@ const Post = props => {
 			const userResponse = await updateUserInfo();
 
 			// Step 5: After user info is updated, navigate to '/auction-added'
-			navigate('/auction-added');
+			navigate(`/auction-added/${auctionId}/${carId}`);
 		} catch (error) {
 			console.error("An error occurred:", error);
 			// Handle the error here if necessary
@@ -182,15 +124,6 @@ const Post = props => {
 			throw error; // Rethrow the error for handling in the main function
 		}
 	}
-
-
-
-
-
-
-
-
-
 
 
 

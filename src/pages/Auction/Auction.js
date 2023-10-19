@@ -44,6 +44,7 @@ const Auction = props => {
 		getAuction();
 	}, [id]);
 
+	
 	return (
 		<section>
 			{
