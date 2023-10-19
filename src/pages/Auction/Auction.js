@@ -8,7 +8,7 @@ import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import testPorsche from '../../assets/testPorsche.svg'
 import CarStats from '../../components/CarStats/CarStats';
 
-const API_URL = 'http://localhost:8080'
+const API_URL = process.env.REACT_APP_BACKEND_API
 
 const Auction = props => {
 	const { id } = useParams();

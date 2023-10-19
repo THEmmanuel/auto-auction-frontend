@@ -6,7 +6,7 @@ import style from './AuctionSucess.module.css';
 import porsche from '../../assets/testPorsche.svg';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 
-const API_URL = 'http://localhost:8080'
+const API_URL = process.env.REACT_APP_BACKEND_API
 
 
 const AuctionSuccess = () => {

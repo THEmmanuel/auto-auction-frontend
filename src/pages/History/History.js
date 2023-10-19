@@ -6,14 +6,12 @@ import { useAccount } from 'wagmi';
 import { Link } from 'react-router-dom';
 
 
-const API_URL = 'http://localhost:8080'
+const API_URL = process.env.REACT_APP_BACKEND_API
 
 
 const History = (props) => {
 	const [auctions, setAuctions] = useState(null); // Initial state is set to null
 	const { address, isDisconnected } = useAccount();
-
-	const API_URL = 'http://localhost:8080'
 
 	const getAuctions = () => {
 		axios

@@ -11,7 +11,7 @@ import carCategories from '../../data/carCategories';
 import { useAccount } from 'wagmi';
 
 
-const API_URL = 'http://localhost:8080'
+const API_URL = process.env.REACT_APP_BACKEND_API
 
 
 const Post = props => {

@@ -9,11 +9,11 @@ import porsche from '../../assets/testPorsche.svg';
 const FileUpload = (props) => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [uploadStatus, setUploadStatus] = useState('');
-	const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMwYmQ0ODE1M0ZBOTYxOGZmZTdGNjEzODk2ODJCZDc1YTY4NkFjNGIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTc0NDkxMzU3NzQsIm5hbWUiOiJhdXRvLWF1Y3Rpb24ifQ.wIjf5oyG2GQ9llHl7I0Xdk6WxoFbFj87UelGEh-O74I';
+	const token = process.env.REACT_APP_WEB3_STORAGE_TOKEN;
 	const [files, setFiles] = useState([]);
 	const [fileName, setFileName] = useState('')
 
-	const API_URL = 'http://localhost:8080'
+	const API_URL = process.env.REACT_APP_BACKEND_API
 
 	// Create a FormData object to send the file
 	const handleImageUpload = async (event) => {
