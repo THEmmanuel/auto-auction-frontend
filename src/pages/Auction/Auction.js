@@ -21,10 +21,12 @@ const Auction = props => {
 
 	const [auction, setAuction] = useState(null); // Initialize auction data as null
 	const [loading, setIsLoading] = useState(true);
+	const [showBidPlacer, setShowBidPlacer] = useState(false);
+
 	const [bid, setBid] = useState({
-		car: auction.car,
-		auction: auction.id,
-		bidder: address,
+		car: '',
+		auction: '',
+		bidder: '',
 		bidAmount: '',
 		bidStatus: 'placed',
 		bidTimeStamp: ''
@@ -57,11 +59,15 @@ const Auction = props => {
 
 
 	const addBidToAuction = () => {
-		
+
 	}
 
 	const placeBid = () => {
 
+	}
+
+	const toggleBidPlacer = () => {
+		
 	}
 
 	useEffect(() => {
@@ -71,19 +77,20 @@ const Auction = props => {
 	const PlaceBidComponent = () => {
 		return (
 			<div className={style.BidPlacer}>
-				<span>Place Bid</span>
-				<input type="text" />
-				<Input
-					width={360}
-					label='Bid amount in $'
-					placeholder='ex: 40000'
-				// change={(e) => handleCarChange('model', e.target.value)}
-				// value={carData.model}
-				/>
-				<SecondaryButton
-					text='Contact Seller'
-					width={150}
-				/>
+				<span className={style.BidText}>Place Bid</span>
+				<div className={style.BidPlaceInputs}>
+					<Input
+						width={360}
+						label='Bid amount in $'
+						placeholder='ex: 40000'
+					// change={(e) => handleCarChange('model', e.target.value)}
+					// value={carData.model}
+					/>
+					<SecondaryButton
+						text='Contact Seller'
+						width={150}
+					/>
+				</div>
 			</div>
 		)
 	}
@@ -161,6 +168,7 @@ const Auction = props => {
 									<PrimaryButton
 										text='Add Bid'
 										width={150}
+										click={() => setShowBidPlacer(!showBidPlacer)}
 									/>
 
 									<PrimaryButton
@@ -168,8 +176,9 @@ const Auction = props => {
 										width={150}
 									/>
 								</div>
-								<PlaceBidComponent />
-								test
+
+								{showBidPlacer ?
+								<PlaceBidComponent /> : null}
 							</div>
 
 

@@ -121,3 +121,15 @@
 .CarDetailsText{
 	color: #C1C1C1;
 }
+
+.BidPlacer{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.BidPlaceInputs{
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+}
