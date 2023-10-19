@@ -18,7 +18,8 @@
 	color: #FFF;
 	text-align: left;
 	display: block;
-	font-size: 1.1em;
+	font-size: 1em;
+	width: 80%;
 }
 
 .ListCardContent {
@@ -63,15 +64,18 @@
 
 .CarAttribute {
 	color: #5E5E5E;
+	font-size: 0.8em;
+	text-align: left;
 }
 
 .CarCurrentBidTitle {
 	color: #828282;
+	font-size: 0.8em;
 }
 
 .CarCurrentBidPrice {
 	color: #FFF;
-	font-size: 1em;
+	font-size: 0.8em;
 }
 
 .BidTime{

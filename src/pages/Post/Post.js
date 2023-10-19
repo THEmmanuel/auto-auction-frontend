@@ -15,7 +15,7 @@ const API_URL = 'http://localhost:8080'
 
 
 const Post = props => {
-	const { address, isDisconnected } = useAccount()
+	const { address, isDisconnected } = useAccount();
 	const navigate = useNavigate()
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")

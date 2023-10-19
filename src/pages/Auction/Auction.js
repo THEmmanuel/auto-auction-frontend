@@ -73,7 +73,7 @@ const Auction = props => {
 												</span>
 
 												<span className={style.BidPriceDollars}>
-													$427000
+													${auction.initialPrice}
 												</span>
 											</div>
 										</div>

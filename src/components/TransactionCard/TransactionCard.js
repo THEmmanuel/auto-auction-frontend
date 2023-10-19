@@ -3,15 +3,15 @@ import style from './TransactionCard.module.css';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 
 
-const TransactionCard = () => {
+const TransactionCard = ({auction}) => {
 	return (
 		<div className={style.TransactionCard}>
 			<div className={style.TransactionDetails}>
-				<span>#QTE6373t6eWrTywqA</span>
-				<span>2020 Ferrari 488 Pista</span>
+				<span>{auction._id}</span>
+				<span>{`${auction.carData.year} ${auction.carData.make} ${auction.carData.model}`}</span>
 
 				<span className={style.TransactionStatus}>
-					status
+					{auction.status}
 				</span>
 			</div>
 
