@@ -5,15 +5,30 @@ import style from './Auction.module.css';
 import BidCard from '../../components/BidCard/BidCard';
 import TimeIcon from '../../assets/timerIcon.svg';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import SecondaryButton from '../../components/SecondaryButton/SecondaryButton';
 import testPorsche from '../../assets/testPorsche.svg'
 import CarStats from '../../components/CarStats/CarStats';
+import Input from '../../components/Input/Input';
+import { useAccount } from 'wagmi';
+
+
 
 const API_URL = process.env.REACT_APP_BACKEND_API
 
 const Auction = props => {
 	const { id } = useParams();
+	const { address, isDisconnected } = useAccount();
+
 	const [auction, setAuction] = useState(null); // Initialize auction data as null
 	const [loading, setIsLoading] = useState(true);
+	const [bid, setBid] = useState({
+		car: auction.car,
+		auction: auction.id,
+		bidder: address,
+		bidAmount: '',
+		bidStatus: 'placed',
+		bidTimeStamp: ''
+	})
 
 	const getAuction = () => {
 		setIsLoading(true); // Set loading to true when fetching data
@@ -40,11 +55,39 @@ const Auction = props => {
 			});
 	};
 
+
+	const addBidToAuction = () => {
+		
+	}
+
+	const placeBid = () => {
+
+	}
+
 	useEffect(() => {
 		getAuction();
 	}, [id]);
 
-	
+	const PlaceBidComponent = () => {
+		return (
+			<div className={style.BidPlacer}>
+				<span>Place Bid</span>
+				<input type="text" />
+				<Input
+					width={360}
+					label='Bid amount in $'
+					placeholder='ex: 40000'
+				// change={(e) => handleCarChange('model', e.target.value)}
+				// value={carData.model}
+				/>
+				<SecondaryButton
+					text='Contact Seller'
+					width={150}
+				/>
+			</div>
+		)
+	}
+
 	return (
 		<section>
 			{
@@ -116,7 +159,7 @@ const Auction = props => {
 
 								<div className={style.AuctionButtons}>
 									<PrimaryButton
-										text='Place Bid'
+										text='Add Bid'
 										width={150}
 									/>
 
@@ -125,7 +168,11 @@ const Auction = props => {
 										width={150}
 									/>
 								</div>
+								<PlaceBidComponent />
+								test
 							</div>
+
+
 
 							<div className={style.BidContentWrapper}>
 								<span className={style.BidNumber}>

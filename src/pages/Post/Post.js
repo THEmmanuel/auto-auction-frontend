@@ -153,8 +153,6 @@ const Post = props => {
 		setCarData({ ...carData, imageURL: imageURL });
 	}
 
-
-
 	return (
 		<section className={style.PostPageWrapper}>
 			{isDisconnected ?
