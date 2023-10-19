@@ -17,6 +17,7 @@ const Input = props => {
 				className={style.Input}
 				onChange={props.change}
 				value={props.value}
+				key={props.key}
 			/>
 		</div>
 	)

@@ -32,6 +32,10 @@ const Auction = props => {
 		bidTimeStamp: ''
 	})
 
+	const currentDate = new Date();
+	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
+	const formattedDate = currentDate.toISOString();
+
 	const getAuction = () => {
 		setIsLoading(true); // Set loading to true when fetching data
 		axios.get(`${API_URL}/auctions/${id}`)
@@ -63,12 +67,30 @@ const Auction = props => {
 	}
 
 	const placeBid = () => {
+		setBid({
+			...bid,
+			car: auction.car,
+			auction: auction._id,
+			bidder: address,
+			bidStatus: 'placed',
+			bidTimeStamp: formattedDate,
+		});
 
+		// Now, you can access bid.bidAmount to get the updated bidAmount value
+		const updatedBid = {
+			...bid,
+			bidAmount: parseFloat(bid.bidAmount), // Convert bidAmount to a number if needed
+		};
+
+		// axios.post('bid url', updatedBid)
+		// .then()
 	}
 
 	const toggleBidPlacer = () => {
-		
+		setShowBidPlacer(!showBidPlacer)
 	}
+
+	const handleBidAmountChange = (e) => setBid({ ...bid, bidAmount: e.target.value });
 
 	useEffect(() => {
 		getAuction();
@@ -83,12 +105,13 @@ const Auction = props => {
 						width={360}
 						label='Bid amount in $'
 						placeholder='ex: 40000'
-					// change={(e) => handleCarChange('model', e.target.value)}
-					// value={carData.model}
+						change={handleBidAmountChange}
+						value={bid.bidAmount}
 					/>
 					<SecondaryButton
 						text='Contact Seller'
 						width={150}
+						click={() => placeBid()}
 					/>
 				</div>
 			</div>
@@ -168,7 +191,7 @@ const Auction = props => {
 									<PrimaryButton
 										text='Add Bid'
 										width={150}
-										click={() => setShowBidPlacer(!showBidPlacer)}
+										click={() => toggleBidPlacer()}
 									/>
 
 									<PrimaryButton
@@ -178,7 +201,7 @@ const Auction = props => {
 								</div>
 
 								{showBidPlacer ?
-								<PlaceBidComponent /> : null}
+									<PlaceBidComponent /> : null}
 							</div>
 
 
