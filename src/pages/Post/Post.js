@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import style from './Post.module.css';
 import Input from '../../components/Input/Input';
@@ -15,6 +16,7 @@ const API_URL = 'http://localhost:8080'
 
 const Post = props => {
 	const { address, isDisconnected } = useAccount()
+	const navigate = useNavigate()
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
 	const formattedDate = currentDate.toISOString();
@@ -29,7 +31,7 @@ const Post = props => {
 		bids: [],
 		initialPrice: '',
 		reservePrice: '',
-		auctionDuration: '',
+		auctionDuration: '24',
 		auctionStartTime: formattedDate,
 		auctionEndTime: '',
 		winBid: ''
@@ -64,46 +66,131 @@ const Post = props => {
 	})
 
 
-	const handleSubmit = () => {
-		// send the car data to the post route first.
-		const addCarToDatabase = () => {
-			axios.post(`${API_URL}/cars`, carData)
-				.then(res => {
-					console.log(res)
-					// get the id from the response.
-					const carId = res.data._id;
-					// Set the car key in the auctionData object
-					setAuctionData({ ...auctionData, car: carId });
-				})
-				.catch(err => err)
+	// const handleSubmit = () => {
+	// 	// Step 1: Add the car to the database
+	// 	const addCarToDatabase = () => {
+	// 		axios.post(`${API_URL}/cars`, carData)
+	// 			.then(res => {
+	// 				console.log("Car added:", res.data);
+	// 				const carId = res.data._id;
+	// 				// Step 2: Set the car key in the auctionData object
+	// 				setAuctionData({ ...auctionData, car: carId });
+	// 			})
+	// 			.catch(err => {
+	// 				console.error("Error adding car:", err);
+	// 			});
+	// 	}
+
+	// 	// Step 4: Add the auction to the database
+	// 	const addAuctionToDatabase = () => {
+	// 		axios.post(`${API_URL}/auctions`, auctionData)
+	// 			.then(res => {
+	// 				console.log("Auction added:", res.data);
+	// 				const auctionId = res.data._id;
+	// 				// Step 5: Update the user data in the state
+	// 				setUserData(prevUserData => ({
+	// 					...prevUserData,
+	// 					createdAuctions: [...prevUserData.createdAuctions, auctionId]
+	// 				}));
+	// 			})
+	// 			.catch(err => {
+	// 				console.error("Error adding auction:", err);
+	// 			});
+	// 	}
+
+	// 	// Step 7: Update user information
+	// 	const updateUserInfo = () => {
+	// 		axios.patch(`${API_URL}/users/${address}`, userData)
+	// 			.then(res => {
+	// 				console.log("User info updated:", res.data);
+	// 				// After user info is updated, navigate to '/auction-added'
+	// 				navigate('/auction-added');
+	// 			})
+	// 			.catch(err => {
+	// 				console.error("Error updating user info:", err);
+	// 			});
+	// 	}
+
+	// 	// Start the process by adding the car
+	// 	addCarToDatabase();
+	// 	addAuctionToDatabase();
+	// 	updateUserInfo();
+	// }
+
+
+
+
+
+
+
+	const handleSubmit = async () => {
+		try {
+			// Step 1: Add the car to the database
+			const carResponse = await addCarToDatabase();
+			const carId = carResponse.data._id;
+
+			// Step 2: Set the car key in the auctionData object
+			const updatedAuctionData = { ...auctionData, car: carId };
+
+			// Step 3: Add the auction to the database
+			const auctionResponse = await addAuctionToDatabase(updatedAuctionData);
+			const auctionId = auctionResponse.data._id;
+
+			// Step 4: Update the user data in the state
+			const userResponse = await updateUserInfo();
+
+			// Step 5: After user info is updated, navigate to '/auction-added'
+			navigate('/auction-added');
+		} catch (error) {
+			console.error("An error occurred:", error);
+			// Handle the error here if necessary
 		}
+	};
 
-		const addAuctionToDatabase = () => {
-			axios.post(`${API_URL}/auctions`, auctionData)
-				.then(res => {
-					addCarToDatabase()
-					console.log(res);
-					const auctionId = res.data._id;
-					// Update the user data in the state by spreading the existing values in createdAuctions and adding the new auctionId
-					setUserData(prevUserData => ({
-						...prevUserData,
-						createdAuctions: [...prevUserData.createdAuctions, auctionId]
-					}));
-				})
-				.catch(err => console.error(err));
+	const addCarToDatabase = async () => {
+		try {
+			const carResponse = await axios.post(`${API_URL}/cars`, carData);
+			console.log("Car added:", carResponse.data);
+
+			// Ensure that the car ID is present in the response
+			return carResponse;
+		} catch (error) {
+			console.error("Error adding car:", error);
+			throw error; // Rethrow the error for handling in the main function
 		}
-
-
-		const updateUserInfo = () => {
-			axios.patch(`${API_URL}/users/${address}`, userData)
-				.then(res => console.log(res))
-				.catch(err => err)
-		}
-
-
-		addAuctionToDatabase()
-		updateUserInfo()
 	}
+
+	const addAuctionToDatabase = async (updatedAuctionData) => {
+		try {
+			// Use the updated auctionData that includes the car ID
+			const auctionResponse = await axios.post(`${API_URL}/auctions`, updatedAuctionData);
+			console.log("Auction added:", auctionResponse.data);
+			return auctionResponse;
+		} catch (error) {
+			console.error("Error adding auction:", error);
+			throw error; // Rethrow the error for handling in the main function
+		}
+	}
+
+	const updateUserInfo = async () => {
+		try {
+			const userResponse = await axios.patch(`${API_URL}/users/${address}`, userData);
+			console.log("User info updated:", userResponse.data);
+			return userResponse;
+		} catch (error) {
+			console.error("Error updating user info:", error);
+			throw error; // Rethrow the error for handling in the main function
+		}
+	}
+
+
+
+
+
+
+
+
+
 
 
 
