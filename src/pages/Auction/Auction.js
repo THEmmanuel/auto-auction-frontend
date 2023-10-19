@@ -62,33 +62,39 @@ const Auction = props => {
 	};
 
 
-	const addBidToAuction = () => {
+	// const addBidToAuction = () => {
 
-	}
+	// }
 
 	const placeBid = () => {
-		setBid({
+		const updatedBid = {
+			...bid,
+			bidAmount: bid.bidAmount,
+			bidTimestamp: formattedDate, // Check if formattedDate is defined
+		};
+
+		console.log(updatedBid);
+
+		axios.post(`${API_URL}/bids`, updatedBid)
+			.then(res => console.log(res));
+	}
+
+	const toggleBidPlacer = () => {
+		const updatedBid = {
 			...bid,
 			car: auction.car,
 			auction: auction._id,
 			bidder: address,
 			bidStatus: 'placed',
-			bidTimeStamp: formattedDate,
-		});
-
-		// Now, you can access bid.bidAmount to get the updated bidAmount value
-		const updatedBid = {
-			...bid,
-			bidAmount: parseFloat(bid.bidAmount), // Convert bidAmount to a number if needed
+			bidTimestamp: formattedDate, // Check if formattedDate is defined
 		};
 
-		// axios.post('bid url', updatedBid)
-		// .then()
+		console.log(updatedBid);
+
+		setBid(updatedBid);
+		setShowBidPlacer(!showBidPlacer);
 	}
 
-	const toggleBidPlacer = () => {
-		setShowBidPlacer(!showBidPlacer)
-	}
 
 	const handleBidAmountChange = (e) => setBid({ ...bid, bidAmount: e.target.value });
 

@@ -337,7 +337,7 @@ const Post = props => {
 								</div>
 
 								<div className={style.CarDetailInputsWrapper}>
-									<div>
+									{/* <div>
 										<Input
 											width={620}
 											label='Reserve price in $ (auction is cancelled if this price is not met)'
@@ -350,7 +350,7 @@ const Post = props => {
 										>
 											Price in ETH: 10.7 ETH
 										</span>
-									</div>
+									</div> */}
 
 									<div>
 										<Input
