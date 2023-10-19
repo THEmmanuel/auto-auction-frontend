@@ -32,6 +32,8 @@ const AuctionSuccess = () => {
 			{carData && auctionData ? (
 				<div>
 					<div className={style.AuctionCarInfoWrapper}>
+						<h3>{auctionId}</h3>
+
 						<span className={style.AuctionHeading}>
 							Awesome you just listed your {`${carData.year} ${carData.make} ${carData.model}`} for sale
 						</span>
@@ -50,7 +52,7 @@ const AuctionSuccess = () => {
 					</span>
 
 					<div className={style.AuctionButtons}>
-						<Link to="/history">
+						<Link to={`/history`}>
 							<PrimaryButton text="View History" width={150} />
 						</Link>
 
@@ -61,8 +63,9 @@ const AuctionSuccess = () => {
 				</div>
 			) : (
 				<p>Loading car and auction data...</p>
-			)}
-		</section>
+			)
+			}
+		</section >
 	);
 };
 
