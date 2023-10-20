@@ -20,10 +20,12 @@ import {
 } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_BACKEND_API
+const COIN_GECKO_API = process.env.COIN_GECKO_API
 
 
 function App() {
 	const { address } = useAccount()
+	const [ethPrice, setEthPrice] = useState(null)
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
 	const formattedDate = currentDate.toISOString();
@@ -38,9 +40,19 @@ function App() {
 		).catch(err => err)
 	}
 
+
+
 	useEffect(() => {
 		addUserToDatabase()
 	}, [address])
+
+
+	useEffect(() => {
+		axios.get(COIN_GECKO_API)
+			.then(res => console.log(res))
+			.catch(err => console.log(err))
+	}, [])
+
 
 	return (
 		<Router>
@@ -70,7 +82,7 @@ function App() {
 
 					<Route
 						exact
-						path='/listings'
+						path='/listings/:category'
 						element=<Listings />
 					>
 					</Route>

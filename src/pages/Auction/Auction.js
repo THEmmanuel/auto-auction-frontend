@@ -32,6 +32,7 @@ const Auction = props => {
 		bidStatus: 'placed',
 		bidTimeStamp: ''
 	})
+	
 
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
@@ -61,7 +62,6 @@ const Auction = props => {
 				// Handle errors in fetching the specific auction
 			});
 	};
-
 
 	// const addBidToAuction = () => {
 

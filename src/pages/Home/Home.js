@@ -36,7 +36,7 @@ const Home = () => {
 			<section className={style.CategoriesWrapper}>
 				{
 					carCategories.map(category =>
-						<Link to='/listings'>
+						<Link to={`/listings/${category.categoryName}`}>
 							<CategoryCard
 								image={category.categoryImage}
 								name={category.categoryName}
