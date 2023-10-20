@@ -21,7 +21,7 @@ const Home = () => {
 				</span>
 			</div>
 
-			<div className={style.SearchWrapper}>
+			{/* <div className={style.SearchWrapper}>
 				<Input
 					width={460}
 					placeholder='What are you looking to buy. eg Porsche 911, Toyota Supra, Tesla etc'
@@ -31,7 +31,7 @@ const Home = () => {
 					className={style.SearchButton}>
 					<img src={searchIcon} alt="" />
 				</button>
-			</div>
+			</div> */}
 
 			<section className={style.CategoriesWrapper}>
 				{

@@ -99,8 +99,15 @@ const Auction = props => {
 
 	const getBids = () => {
 		axios.get(`${API_URL}/bids/auction/${id}`)
-			.then((res) => setBids(res.data))
+			.then((res) => {
+				setBids(res.data);
+			})
+			.catch((error) => {
+				console.error("Error fetching bids:", error);
+				setBids([]); // Set bids to an empty array in case of an error
+			});
 	}
+
 
 
 	const handleBidAmountChange = (e) => setBid({ ...bid, bidAmount: e.target.value });
@@ -110,11 +117,7 @@ const Auction = props => {
 		getBids()
 	}, [id]);
 
-	// const PlaceBidComponent = () => {
-	// 	return (
 
-	// 	)
-	// }
 
 	return (
 		<section>
@@ -200,22 +203,26 @@ const Auction = props => {
 
 								{showBidPlacer ?
 									<div className={style.BidPlacer}>
-										<span className={style.BidText}>Place Bid</span>
-										<div className={style.BidPlaceInputs}>
-											<Input
-												width={360}
-												label='Bid amount in $'
-												placeholder='ex: 40000'
-												change={handleBidAmountChange}
-												value={bid.bidAmount}
-											/>
+										{
+											isDisconnected ?
+												<span className={style.AuctionInfoText}>
+													Connect wallet to place bid
+												</span>
+												:
+												<><span className={style.BidText}>Place Bid</span><div className={style.BidPlaceInputs}>
+													<Input
+														width={360}
+														label='Bid amount in $'
+														placeholder='ex: 40000'
+														change={handleBidAmountChange}
+														value={bid.bidAmount} />
 
-											<SecondaryButton
-												text='Place your bid'
-												width={150}
-												click={() => placeBid()}
-											/>
-										</div>
+													<SecondaryButton
+														text='Place your bid'
+														width={150}
+														click={() => placeBid()} />
+												</div></>
+										}
 									</div>
 									: null}
 							</div>
@@ -226,20 +233,27 @@ const Auction = props => {
 								{bids === null ? (
 									<span>Loading...</span>
 								) : bids.length === 0 ? (
-									<span>No bids available.</span>
+
+									<span className={style.AuctionInfoText}>
+										No bids available.
+									</span>
+
 								) : (
-									<div>
+									<div className={style.BidsWrapper}>
 										<span className={style.BidNumber}>
 											{bids.length} bids
 										</span>
-										{bids.map((bid) => (
-											<BidCard
-												key={bid._id} // You should use a unique key for each element when mapping.
-												bidder={bid.bidder}
-												bidAmount={bid.bidAmount}
-												bidTimeStamp={bid.bidTimestamp}
-											/>
-										))}
+
+										<div className={style.Bids}>
+											{bids.map((bid) => (
+												<BidCard
+													key={bid._id} // You should use a unique key for each element when mapping.
+													bidder={bid.bidder}
+													bidAmount={bid.bidAmount}
+													bidTimeStamp={bid.bidTimestamp}
+												/>
+											))}
+										</div>
 									</div>
 								)}
 							</div>

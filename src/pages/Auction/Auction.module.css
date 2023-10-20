@@ -57,6 +57,19 @@
 	display: flex;
 	flex-direction: column;
 	gap: 25px;
+	margin-top: 20px;
+}
+
+.BidsWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.Bids{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .BidNumber {
@@ -67,7 +80,7 @@
 	margin-top: 50px;
 }
 
-.BidPriceWrapper{
+.BidPriceWrapper {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
@@ -75,61 +88,65 @@
 	margin-bottom: 20px;
 }
 
-.BidDetails{
+.BidDetails {
 	display: flex;
 	flex-direction: column;
 	margin-top: 50px;
 }
 
-.BidTime{
+.BidTime {
 	color: #FFF;
 }
 
-.TimeIcon{
+.TimeIcon {
 	width: 20px;
 }
 
-.BidTimeWrapper{
+.BidTimeWrapper {
 	display: flex;
 	flex-direction: row;
 	gap: 5px;
 }
 
-.BidTimeContainer{
+.BidTimeContainer {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
 }
 
-.BidTimeText{
+.BidTimeText {
 	color: #595959;
 }
 
-.CarDetailsTextWrapper{
+.CarDetailsTextWrapper {
 	display: flex;
 	flex-direction: column;
 	text-align: left;
 }
 
-.CarDetailsTextTitle{
+.CarDetailsTextTitle {
 	font-size: 1.1em;
 	color: #FFF;
 	margin-top: 70px;
 	margin-bottom: 30px;
 }
 
-.CarDetailsText{
+.CarDetailsText {
 	color: #C1C1C1;
 }
 
-.BidPlacer{
+.BidPlacer {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 }
 
-.BidPlaceInputs{
+.BidPlaceInputs {
 	display: flex;
 	flex-direction: column;
 	gap: 35px;
+}
+
+.AuctionInfoText {
+	color: #FFF;
 }
