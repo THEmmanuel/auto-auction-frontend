@@ -132,6 +132,20 @@ const Auction = props => {
 		setShowBidPlacer(!showBidPlacer);
 	}
 
+	// Add a function to compare two timestamps
+	function compareTimestamps(bidA, bidB) {
+		const timestampA = new Date(bidA.bidTimestamp);
+		const timestampB = new Date(bidB.bidTimestamp);
+
+		// Sort in descending order (most recent first)
+		return timestampB - timestampA;
+	}
+
+	// Sort the bids by recency when they are available
+	const sortedBids = bids
+		? [...bids].sort(compareTimestamps)
+		: null;
+
 
 	const getBids = () => {
 		axios.get(`${API_URL}/bids/auction/${id}`)
@@ -263,27 +277,22 @@ const Auction = props => {
 									: null}
 							</div>
 
-
-
 							<div className={style.BidContentWrapper}>
-								{bids === null ? (
+								{sortedBids === null ? (
 									<span>Loading...</span>
-								) : bids.length === 0 ? (
-
+								) : sortedBids.length === 0 ? (
 									<span className={style.AuctionInfoText}>
 										No bids available.
 									</span>
-
 								) : (
 									<div className={style.BidsWrapper}>
 										<span className={style.BidNumber}>
-											{bids.length} bids
+											{sortedBids.length} bids
 										</span>
-
 										<div className={style.Bids}>
-											{bids.map((bid) => (
+											{sortedBids.map((bid) => (
 												<BidCard
-													key={bid._id} // You should use a unique key for each element when mapping.
+													key={bid._id}
 													bidder={bid.bidder}
 													bidAmount={bid.bidAmount}
 													bidTimeStamp={bid.bidTimestamp}
@@ -293,7 +302,6 @@ const Auction = props => {
 									</div>
 								)}
 							</div>
-
 						</div>
 
 						<div className={style.CarDetails}>
