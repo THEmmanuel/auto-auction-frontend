@@ -16,6 +16,7 @@ import 'react-simple-toasts/dist/theme/dark.css'; // choose your theme
 
 
 const API_URL = process.env.REACT_APP_BACKEND_API
+toastConfig({ theme: 'dark' });
 
 const Auction = props => {
 	const { id } = useParams();
@@ -96,11 +97,24 @@ const Auction = props => {
 			bidTimestamp: formattedDate, // Check if formattedDate is defined
 		};
 
-		console.log(updatedBid);
-
 		axios.post(`${API_URL}/bids`, updatedBid)
-			.then(res => console.log(res));
-	}
+			.then((res) => {
+				// Check if the request was successful
+				if (res.status === 200 || res.status === 201) {
+					// Display a success toast
+					toast('Bid placed successfully');
+
+					// Reload the page
+					window.location.reload();
+				}
+			})
+			.catch((error) => {
+				// Handle errors here, if needed
+				console.error('Error placing bid:', error);
+				// Display an error toast
+				toast('Failed to place the bid');
+			});
+	};
 
 	const toggleBidPlacer = () => {
 		const updatedBid = {
