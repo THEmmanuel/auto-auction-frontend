@@ -10519,6 +10519,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-simple-toasts@^5.10.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/react-simple-toasts/-/react-simple-toasts-5.10.0.tgz#cfa692cd06fe858ea327adf32e72db2199459fa7"
+  integrity sha512-GIsBaLkZnyqeTzs0fSmXoLr5GtSnHv9C35tEx/2mc8H7/OaTlwXRHjm0ssDP454gvI4rZFS+rnj2HOL5zuiiwA==
+
 react-style-singleton@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.2.1.tgz#f99e420492b2d8f34d38308ff660b60d0b1205b4"

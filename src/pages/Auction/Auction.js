@@ -10,6 +10,8 @@ import testPorsche from '../../assets/testPorsche.svg'
 import CarStats from '../../components/CarStats/CarStats';
 import Input from '../../components/Input/Input';
 import { useAccount } from 'wagmi';
+import toast, { toastConfig } from 'react-simple-toasts';
+import 'react-simple-toasts/dist/theme/dark.css'; // choose your theme
 
 
 
@@ -22,7 +24,7 @@ const Auction = props => {
 	const [auction, setAuction] = useState(null); // Initialize auction data as null
 	const [loading, setIsLoading] = useState(true);
 	const [showBidPlacer, setShowBidPlacer] = useState(false);
-	const [bids, setBids] = useState(null)
+	const [bids, setBids] = useState(null);
 
 	const [bid, setBid] = useState({
 		car: '',
@@ -32,7 +34,27 @@ const Auction = props => {
 		bidStatus: 'placed',
 		bidTimeStamp: ''
 	})
-	
+
+	// Function to find the bid with the highest bid amount
+	const findHighestBid = () => {
+		if (bids && bids.length > 0) {
+			let highestBid = bids[0]; // Initialize with the first bid
+
+			for (let i = 1; i < bids.length; i++) {
+				if (bids[i].bidAmount > highestBid.bidAmount) {
+					highestBid = bids[i]; // Update the highest bid if a higher bid is found
+				}
+			}
+
+			return highestBid;
+		}
+
+		return null; // Return null if there are no bids or bids array is empty
+	};
+
+	// Call this function to get the highest bid
+	const highestBid = findHighestBid();
+
 
 	const currentDate = new Date();
 	// Format the date to a string in ISO format (e.g., "2023-10-16T12:30:00.000Z")
@@ -162,7 +184,7 @@ const Auction = props => {
 												</span>
 
 												<span className={style.BidPriceDollars}>
-													$427000
+													{highestBid ? `$${highestBid.bidAmount}` : 'No bids available'}
 												</span>
 											</div>
 										</div>

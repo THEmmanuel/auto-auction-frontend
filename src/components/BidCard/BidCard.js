@@ -3,22 +3,22 @@ import style from './BidCard.module.css';
 import formatDate from '../../utils/formatDate';
 
 
-const formatWalletAddress = (address) => {
-  if (address.length < 8) return address; // If the address is too short, return it as it is
-  const start = address.slice(0, 6);
-  const end = address.slice(-6);
-  return `${start}...${end}`;
-};
+// const formatWalletAddress = (address) => {
+//   if (address.length < 8) return address; // If the address is too short, return it as it is
+//   const start = address.slice(0, 6);
+//   const end = address.slice(-6);
+//   return `${start}...${end}`;
+// };
 
 const BidCard = props => {
-	const formattedBidder = formatWalletAddress(props.bidder);
+	// const formattedBidder = formatWalletAddress(props.bidder);
 	return (
 		<div className={style.BidCardWrapper}>
 			<div className={style.BidCardContent}>
 				<div className={style.BidCardIcon} />
 
 				<span className={style.BidderWalletAddress}>
-					{formattedBidder}
+					{/* {formattedBidder} */}
 				</span>
 
 				<div className={style.BidAmountDetails}>
