@@ -15,7 +15,6 @@ toastConfig({ theme: 'dark' });
 
 const History = (props) => {
 	const [auctions, setAuctions] = useState(null); // Initial state is set to null
-	const [mintState, setMintState] = useState('not minted')
 	const { address, isDisconnected } = useAccount();
 
 	const getAuctions = () => {
@@ -44,39 +43,6 @@ const History = (props) => {
 			});
 	};
 
-
-	const askContractToMintNft = async () => {
-		const CONTRACT_ADDRESS = "0x1cC88cEd7554Fdf7160E97e6a31c9CF2FC222436";
-
-		try {
-			const { ethereum } = window;
-			if (ethereum) {
-				const provider = new ethers.BrowserProvider(window.ethereum);
-				const signer = await provider.getSigner();
-				const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, NFT.abi, signer);
-
-				console.log('Gonna pop wallet now to pay gas...');
-				toast('opening wallet');
-				let nftTxn = await connectedContract.makeNFTStuff();
-
-				console.log('Mining... please wait.');
-				toast('minting NFT');
-				setMintState('minting')
-				await nftTxn.wait();
-
-				toast(`Minted, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
-				setMintState('minted')
-
-			} else {
-				toast('Ethereum object does not exist');
-			}
-
-		} catch (error) {
-			console.log(error);
-		};
-
-	};
-
 	useEffect(() => {
 		getAuctions();
 	}, []);
@@ -95,8 +61,6 @@ const History = (props) => {
 					auctions.map((auction) => (
 						<TransactionCard
 							auction={auction}
-							mintNFT={askContractToMintNft}
-							nftStatus={mintState}
 						/>
 					))
 				) : (
