@@ -3,7 +3,9 @@ import style from './TransactionCard.module.css';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 
 
-const TransactionCard = ({auction}) => {
+const TransactionCard = ({ auction, mintNFT }) => {
+	console.log(mintNFT)
+	
 	return (
 		<div className={style.TransactionCard}>
 			<div className={style.TransactionDetails}>
@@ -18,6 +20,7 @@ const TransactionCard = ({auction}) => {
 			<PrimaryButton
 				text='Mint NFT'
 				width={100}
+				click={() => mintNFT()}
 			/>
 		</div>
 	)

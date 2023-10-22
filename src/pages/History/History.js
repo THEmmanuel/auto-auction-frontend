@@ -5,7 +5,10 @@ import axios from 'axios';
 import { useAccount } from 'wagmi';
 import { Link } from 'react-router-dom';
 
+import NFT from '../../utils/NFT.json'
 
+
+const ethers = require("ethers")
 const API_URL = process.env.REACT_APP_BACKEND_API
 
 
@@ -39,6 +42,35 @@ const History = (props) => {
 			});
 	};
 
+
+	const askContractToMintNft = async () => {
+		const CONTRACT_ADDRESS = "0x1cC88cEd7554Fdf7160E97e6a31c9CF2FC222436";
+
+		try {
+			const { ethereum } = window;
+			if (ethereum) {
+				const provider = new ethers.BrowserProvider(window.ethereum);
+				const signer = await provider.getSigner();
+				const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, NFT.abi, signer);
+
+				console.log('Gonna pop wallet now to pay gas...');
+				let nftTxn = await connectedContract.makeNFTStuff();
+
+				console.log('Mining... please wait.');
+				await nftTxn.wait();
+
+				console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
+
+			} else {
+				console.log('Ethereum object does not exist');
+			}
+
+		} catch (error) {
+			console.log(error);
+		};
+
+	};
+
 	useEffect(() => {
 		getAuctions();
 	}, []);
@@ -55,9 +87,9 @@ const History = (props) => {
 				) : auctions.length > 0 ? (
 					// When data is available
 					auctions.map((auction) => (
-						<Link to={`/auction/${auction._id}`} key={auction._id}>
-							<TransactionCard auction={auction} />
-						</Link>
+						<TransactionCard auction={auction}
+							mintNFT={askContractToMintNft}
+						/>
 					))
 				) : (
 					// When there is no data
