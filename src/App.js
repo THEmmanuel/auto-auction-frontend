@@ -21,7 +21,7 @@ import {
 } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_BACKEND_API
-const COIN_GECKO_API = process.env.COIN_GECKO_API
+// const COIN_GECKO_API = process.env.COIN_GECKO_API
 
 
 function App() {
@@ -48,11 +48,11 @@ function App() {
 	}, [address])
 
 
-	useEffect(() => {
-		axios.get(COIN_GECKO_API)
-			.then(res => console.log(res))
-			.catch(err => console.log(err))
-	}, [])
+	// useEffect(() => {
+	// 	axios.get(COIN_GECKO_API)
+	// 		.then(res => console.log(res))
+	// 		.catch(err => console.log(err))
+	// }, [])
 
 
 	return (

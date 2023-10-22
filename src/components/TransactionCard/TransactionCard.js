@@ -6,7 +6,6 @@ import toast, { toastConfig } from 'react-simple-toasts';
 import NFT from '../../utils/NFT.json'
 
 
-
 const ethers = require("ethers")
 const API_URL = process.env.REACT_APP_BACKEND_API
 toastConfig({ theme: 'dark' });

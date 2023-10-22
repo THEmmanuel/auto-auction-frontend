@@ -11,8 +11,9 @@ import CarStats from '../../components/CarStats/CarStats';
 import Input from '../../components/Input/Input';
 import { useAccount } from 'wagmi';
 import toast, { toastConfig } from 'react-simple-toasts';
+import NFTAuction from '../../utils/NFTAuction.json';
 
-
+const ethers = require("ethers")
 const API_URL = process.env.REACT_APP_BACKEND_API
 toastConfig({ theme: 'dark' });
 
@@ -33,6 +34,10 @@ const Auction = props => {
 		bidStatus: 'placed',
 		bidTimeStamp: ''
 	})
+	const AUCTION_ADDRESS = '0x38e62DAfCB1ff52856AF2382E8f8B5cCE65D7316'
+	const NFT_ADDRESS = "0x1cC88cEd7554Fdf7160E97e6a31c9CF2FC222436";
+
+	const { ethereum } = window;
 
 	// Function to find the bid with the highest bid amount
 	const findHighestBid = () => {
@@ -95,6 +100,8 @@ const Auction = props => {
 			bidTimestamp: formattedDate, // Check if formattedDate is defined
 		};
 
+		// placeBidAuction(15)
+
 		axios.post(`${API_URL}/bids`, updatedBid)
 			.then((res) => {
 				// Check if the request was successful
@@ -113,6 +120,73 @@ const Auction = props => {
 				toast('Failed to place the bid');
 			});
 	};
+
+	// Set up the provider and the contract instance
+	// const provider = new ethers.BrowserProvider(window.ethereum);
+	// // Get the signer from the provider
+	// const signer = provider.getSigner();
+
+
+
+	// Call the startAuction function
+	async function startAuction() {
+		const provider = new ethers.BrowserProvider(window.ethereum);
+		const signer = await provider.getSigner();
+
+		const auctionContract = new ethers.Contract(AUCTION_ADDRESS, NFTAuction.abi, signer)
+
+		const tx = await auctionContract.startAuction();
+		const receipt = await tx.wait();
+
+		// Check the status of the transaction
+		if (receipt.status === 1) {
+			console.log("Auction started successfully");
+		} else {
+			console.log("Auction failed");
+		}
+	}
+
+	async function placeBidAuction(amount) {
+		if (ethereum) {
+			const provider = new ethers.BrowserProvider(window.ethereum);
+			const signer = await provider.getSigner();
+			const auctionContract = new ethers.Contract(AUCTION_ADDRESS, NFTAuction.abi, signer)
+
+			// Convert the amount to wei
+			const weiAmount = ethers.utils.parseEther(amount);
+
+			// Connect to the contract with the signer
+
+			// Call the placeBid function and wait for the transaction to be mined
+			const tx = await auctionContract.placeBid(weiAmount);
+			const receipt = await tx.wait();
+
+			// Check the status of the transaction
+			if (receipt.status === 1) {
+				console.log("Bid placed successfully");
+			} else {
+				console.log("Bid failed");
+			}
+		}
+	}
+
+	// Call the endAuction function
+	async function endAuction() {
+		const provider = new ethers.BrowserProvider(window.ethereum);
+		const signer = await provider.getSigner();
+		const auctionContract = new ethers.Contract(AUCTION_ADDRESS, NFTAuction.abi, signer)
+		// Connect to the contract with the signer
+		// Call the endAuction function and wait for the transaction to be mined
+		const tx = await auctionContract.endAuction();
+		const receipt = await tx.wait();
+
+		// Check the status of the transaction
+		if (receipt.status === 1) {
+			console.log("Auction ended successfully");
+		} else {
+			console.log("Auction failed");
+		}
+	}
 
 	const toggleBidPlacer = () => {
 		const updatedBid = {
@@ -191,7 +265,7 @@ const Auction = props => {
 											</span>
 											<div className={style.BidPriceWrapper}>
 												<span className={style.BidPriceETH}>
-													30.8ETH
+													{/* 30.8ETH */}
 												</span>
 
 												<span className={style.BidPriceDollars}>
@@ -206,7 +280,7 @@ const Auction = props => {
 											</span>
 											<div className={style.BidPriceWrapper}>
 												<span className={style.BidPriceETH}>
-													30.8ETH
+													{/* 30.8ETH */}
 												</span>
 
 												<span className={style.BidPriceDollars}>
@@ -244,8 +318,14 @@ const Auction = props => {
 									/>
 
 									<PrimaryButton
-										text='Contact Seller'
+										text='End Auction'
 										width={150}
+										// click={() => endAuction()}
+										click={() => {
+											// endAuction();
+											window.location.reload();
+										}}
+
 									/>
 								</div>
 
@@ -318,7 +398,7 @@ const Auction = props => {
 									exteriorColor={auction.carData.exteriorColor}
 									interiorColor={auction.carData.interiorColor}
 									sellerType={auction.carData.sellerType}
-									nftHash = {auction.hash}
+									nftHash={auction.hash}
 								/>
 							</div>
 
