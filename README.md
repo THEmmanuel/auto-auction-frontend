@@ -6,7 +6,7 @@ Build Status
 
 <hr />
 
-<img src="./.github/assets/logo.png" align="right"
+<img src="./github/assets/logo.png" align="right"
      alt="CarFT Logo" width=200 />
 
 </div>
@@ -29,8 +29,14 @@ Build Status
 
 Auto Auction lets vehicle owners visualize their vehicle ownership in the form of an NFT. Our goal is to create a marketplace that leverages web3 to create a better vehicle buying and selling experience.
 
-Give Auto Auction a try via the like below:
+Give Auto Auction a try via the link below:
 https://auto-auction-frontend.vercel.app/
+
+Backend/endpoints:
+https://github.com/THEmmanuel/auto-auction-backend
+
+Smart Contracts:
+https://github.com/THEmmanuel/auto-auction-contracts
 
 ## 🎬 **Pitch & Demo (Video)**
 
