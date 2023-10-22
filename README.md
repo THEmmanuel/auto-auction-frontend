@@ -1,3 +1,84 @@
+<div align="center">
+
+#  **Auto Auction - EthOnline 2023**
+
+Build Status
+
+<hr />
+
+<img src="./.github/assets/logo.png" align="right"
+     alt="CarFT Logo" width=200 />
+
+</div>
+
+## Table of Contents 📌
+
+-   [🚀 **Statement**](#-statement)
+-   [🎬 **Pitch & Demo (Video)**](#-pitch--live-demo-video)
+-   [💬 **Problem**](#-problem)
+-   [💡 **Solution**](#-solution)
+-   [💻 **How we built it**](#-how-we-built-it)
+    -   [Tech Implementation](#technological-implementation)
+        -   [Tech Stack](#tech-stack)
+        -   [Smart Contracts](#smart-contracts)
+    -   [Technical details](#technical-details)
+
+<hr />
+
+## 🚀 **Statement**
+
+Auto Auction lets vehicle owners visualize their vehicle ownership in the form of an NFT. Our goal is to create a marketplace that leverages web3 to create a better vehicle buying and selling experience.
+
+Give Auto Auction a try via the like below:
+https://auto-auction-frontend.vercel.app/
+
+## 🎬 **Pitch & Demo (Video)**
+
+We built an app that lets vehicle owners mint an NFT that serves as proof of real world ownership of their vehicle. We are building tools for interacting with these NFTs, including options for decentralized photo galleries for vehicles, listing vehicles for sale via auction, and generating paper contracts out of smart contracts.
+
+<p align='center'>
+    <a href='https://www.youtube.com/>
+        <img src="https://auto-auction-frontend.vercel.app/static/media/hatchback.cebc1977b152e19e435bf53a1466c76e.svg">
+    </a>
+</p>
+
+## 💬 **Problem：Car buying and selling has not evolved with technology.**
+
+- Seller first market.
+- No reputation system.
+- Difficult to prove ownership in a digital world.
+
+## 💡 **Solution：NFTs for Cars!**
+
+- Mint an NFT to prove ownership.
+- Buy and Sell the NFT to transfer real world ownership.
+
+## 💻 **How we built it**
+
+### Tech Implementation
+
+#### Tech Stack
+
+-   Front-End:
+-   Back-End:
+-   Mobile:
+-   Data Storage: IPFS and Filecoin
+-   Blockchain: Deployment on Polygon.
+
+#### Smart Contracts
+
+-   Mint NFT from any VIN (Vehicle Identification Number)
+-   Auction Contract
+-   Export paper contract to mirror smart contract
+
+### Technical details
+
+-   VIN number used as unique identifier
+-   The Ethereum standards we based the product on:
+-   Reputation is achieved by...
+-   Data that is stored off-chain....
+-   Data that is stored on-chain...
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
