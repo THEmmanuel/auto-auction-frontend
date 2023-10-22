@@ -11,8 +11,6 @@ import CarStats from '../../components/CarStats/CarStats';
 import Input from '../../components/Input/Input';
 import { useAccount } from 'wagmi';
 import toast, { toastConfig } from 'react-simple-toasts';
-import 'react-simple-toasts/dist/theme/dark.css'; // choose your theme
-
 
 
 const API_URL = process.env.REACT_APP_BACKEND_API

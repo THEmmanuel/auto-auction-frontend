@@ -3,17 +3,19 @@ import style from './History.module.css';
 import TransactionCard from '../../components/TransactionCard/TransactionCard';
 import axios from 'axios';
 import { useAccount } from 'wagmi';
+import toast, { toastConfig } from 'react-simple-toasts';
 import { Link } from 'react-router-dom';
 
 import NFT from '../../utils/NFT.json'
 
-
 const ethers = require("ethers")
 const API_URL = process.env.REACT_APP_BACKEND_API
+toastConfig({ theme: 'dark' });
 
 
 const History = (props) => {
 	const [auctions, setAuctions] = useState(null); // Initial state is set to null
+	const [mintState, setMintState] = useState('not minted')
 	const { address, isDisconnected } = useAccount();
 
 	const getAuctions = () => {
@@ -54,15 +56,19 @@ const History = (props) => {
 				const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, NFT.abi, signer);
 
 				console.log('Gonna pop wallet now to pay gas...');
+				toast('opening wallet');
 				let nftTxn = await connectedContract.makeNFTStuff();
 
 				console.log('Mining... please wait.');
+				toast('minting NFT');
+				setMintState('minting')
 				await nftTxn.wait();
 
-				console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
+				toast(`Minted, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
+				setMintState('minted')
 
 			} else {
-				console.log('Ethereum object does not exist');
+				toast('Ethereum object does not exist');
 			}
 
 		} catch (error) {
@@ -87,8 +93,10 @@ const History = (props) => {
 				) : auctions.length > 0 ? (
 					// When data is available
 					auctions.map((auction) => (
-						<TransactionCard auction={auction}
+						<TransactionCard
+							auction={auction}
 							mintNFT={askContractToMintNft}
+							nftStatus={mintState}
 						/>
 					))
 				) : (

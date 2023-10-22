@@ -3,9 +3,22 @@ import style from './TransactionCard.module.css';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 
 
-const TransactionCard = ({ auction, mintNFT }) => {
-	console.log(mintNFT)
-	
+const TransactionCard = ({ auction, mintNFT, nftStatus }) => {
+	let button; // declare a variable
+	if (nftStatus === "not minted") { // check the condition
+		button = <PrimaryButton // assign the component to the variable
+			text={'Mint NFT'}
+			width={100}
+			click={() => mintNFT()}
+		/>;
+	}
+	if (nftStatus === 'minting') {
+		button = <span>Minting</span>;
+	}
+
+	if (nftStatus === 'minted') {
+		button = <span>Minted</span>;
+	}
 	return (
 		<div className={style.TransactionCard}>
 			<div className={style.TransactionDetails}>
@@ -17,11 +30,7 @@ const TransactionCard = ({ auction, mintNFT }) => {
 				</span>
 			</div>
 
-			<PrimaryButton
-				text='Mint NFT'
-				width={100}
-				click={() => mintNFT()}
-			/>
+			{button}
 		</div>
 	)
 }
