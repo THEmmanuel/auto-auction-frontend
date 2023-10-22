@@ -61,7 +61,7 @@ const CarStats = props => {
 
 					<div className={style.CarStatInfo}>
 						<span className={style.CarStatText}>NFT contract address</span>
-						<span className={style.CarStat}>0xdB055877e6c13b6A6B25aBcAA29B393777dD0a73</span>
+						<span className={style.CarStat}>{props.nftHash || 'No NFT Minted'} </span>
 					</div>
 
 					<div className={style.CarStatInfo}>

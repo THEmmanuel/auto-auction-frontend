@@ -318,6 +318,7 @@ const Auction = props => {
 									exteriorColor={auction.carData.exteriorColor}
 									interiorColor={auction.carData.interiorColor}
 									sellerType={auction.carData.sellerType}
+									nftHash = {auction.hash}
 								/>
 							</div>
 
